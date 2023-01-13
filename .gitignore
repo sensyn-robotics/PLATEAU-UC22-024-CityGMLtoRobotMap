@@ -1,1 +1,4 @@
 /citygml-tools-1.4.4/
+.idea/
+__pycache__/
+IfcConvert
