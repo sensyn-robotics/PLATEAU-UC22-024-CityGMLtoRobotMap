@@ -1,8 +1,9 @@
+import argparse
 from pathlib import Path
+
+import open3d
 import pymeshlab
 import trimesh
-import open3d
-import argparse
 
 if __name__ == '__main__':
 

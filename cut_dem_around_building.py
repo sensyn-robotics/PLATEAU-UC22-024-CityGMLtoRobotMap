@@ -1,7 +1,8 @@
-import trimesh
-from trimesh import creation
 import argparse
 from pathlib import Path
+
+import trimesh
+from trimesh import creation
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
