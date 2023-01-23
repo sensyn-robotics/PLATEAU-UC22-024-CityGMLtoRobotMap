@@ -76,6 +76,7 @@ if __name__ == '__main__':
     parser.add_argument('--alt', type=float, default=17.0)
     parser.add_argument('--mapcode_level')
     parser.add_argument('--save_dir', type=str, default=str(Path.home().joinpath('CG2RM', 'obj')))
+    parser.add_argument('-u', '--update', action='store_true')
 
     args = parser.parse_args()
 
@@ -101,8 +102,11 @@ if __name__ == '__main__':
     # city gml to city json:  no coordinate trans
     for gml_file in numbers_gml_file:
         json_path = str(gml_file).replace('.gml', '.json')
-        if not exists(json_path):
-            subprocess.run(["citygml-tools-1.4.4/citygml-tools", "to-cityjson", "--vertices-digits=15", "--template-digits=15", str(gml_file)])
+        if not exists(json_path) or args.update:
+            subprocess.run(
+                ["citygml-tools-2.0.0/citygml-tools",
+                 "to-cityjson", "--vertex-precision=15", "--template-precision=15",
+                 "--cityjson-version=1.0", str(gml_file)])
         else:
             print(json_path, 'is already exist')
 
@@ -116,14 +120,14 @@ if __name__ == '__main__':
         input_gml_file = str(gml_path).replace('.gml', '.json')  # args.city_json_file
         obj_file = obj_save_directory.joinpath(gml_path.name.replace(".gml", ".obj"))
 
-        if exists(obj_file):
+        if exists(obj_file) and (not args.update):
             print(obj_file, 'is already exist')
         else:
             print('converting ', obj_file)
             with open(input_gml_file, mode='r', encoding='utf-8-sig') as f:
                 CJ = cityjson.reader(file=f, ignore_duplicate_keys=True)
                 print(CJ.get_info())
-
+            # CJ.filter_lod()
             # with Timer() as t1:
             print("Before point 1", CJ.j['vertices'][0])
 

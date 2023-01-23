@@ -5,6 +5,8 @@ import open3d
 import pymeshlab
 import trimesh
 
+ms = pymeshlab.MeshSet()
+
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
@@ -28,7 +30,6 @@ if __name__ == '__main__':
         print('area size: {}, density: {} '.format(area_size, density))
 
         # generate point cloud
-        ms = pymeshlab.MeshSet()
         ms.load_new_mesh(str(input_obj_file))
         print('sampling {} points ....'.format(area_size * density))
         ms.generate_sampling_poisson_disk(samplenum=area_size * density)
