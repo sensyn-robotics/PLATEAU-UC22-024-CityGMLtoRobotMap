@@ -4,23 +4,23 @@
 ## install 
 ubuntu18 上で動作確認を行いました。
 
-citygml-tools
+1. citygml-tools  
 https://github.com/citygml4j/citygml-tools/releases/download/v2.0.0/citygml-tools-2.0.0.zip
 
-（BIMを使う場合のみ）ifc converter　
+2. （BIMを使う場合のみ）ifc converter　  
 https://blenderbim.org/docs-python/ifcconvert/installation.html
 
-python3.8 をinstallした後
-`pip3 install poetry`
+3. python3.8 をinstallした後  
+`pip3 install poetry`  
 `poetry install`
 
 
 ## 使用手順・方法
-1 - CityGMLをobjに変換
-2 - （BIMを使う場合のみ）BIMをobjに変換
-3 - obj から点群生成
-4 - （BIMを使う場合のみ）obj(CityGMLから)とobj(BIM)の位置合わせを行う
-5 - 複数の点群を一つの点群にまとめる
+1 - CityGMLをobjに変換  
+2 - （BIMを使う場合のみ）BIMをobjに変換  
+3 - obj から点群生成  
+4 - （BIMを使う場合のみ）obj(CityGMLから)とobj(BIM)の位置合わせを行う  
+5 - 複数の点群を一つの点群にまとめる  
 
 ### 1.CityGMLをobjに変換
 CityGML形式のデータを
@@ -32,7 +32,7 @@ CityGML形式のデータを
 `python3 view_obj.py $HOME/CG2RM/obj_file.obj`
 
 #####  extract lod3
-`./citygml-tools-1.4.4/citygml-tools filter-lods --lod=3 --mode=maximum *.gml`
+`./citygml-tools-2.0.0/citygml-tools filter-lods --lod=3 --mode=maximum *.gml`
 
 ### 2.BIMを使う場合のみ）BIMをobjに変換
 BIMをobjに変換する場合はIfcConvertを使用します。以下のコマンドで変換を行います。
