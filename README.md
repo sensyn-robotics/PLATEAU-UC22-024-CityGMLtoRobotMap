@@ -10,8 +10,9 @@ https://github.com/citygml4j/citygml-tools/releases/download/v2.0.0/citygml-tool
 （BIMを使う場合のみ）ifc converter　
 https://blenderbim.org/docs-python/ifcconvert/installation.html
 
-install python3.8
-poetry 
+python3.8 をinstallした後
+`pip3 install poetry`
+`poetry install`
 
 
 ## 使用手順・方法
