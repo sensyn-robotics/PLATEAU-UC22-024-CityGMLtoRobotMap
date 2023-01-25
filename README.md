@@ -1,8 +1,13 @@
 
 # CityGMLtoRobotMap
 
-## install 
-ubuntu18 上で動作確認を行いました。
+# 概要
+* CityGMLをRobotが使用できる地図として変換するツールです。
+* 本ツールは、国土交通省の[Project PLATEAU](https://www.mlit.go.jp/plateau/) で、SnesynRoboticsが開発したものです。
+
+
+## インストール方法 
+確認済動作環境: Ubuntu18,python3.8
 
 1. citygml-tools  
 https://github.com/citygml4j/citygml-tools/releases/download/v2.0.0/citygml-tools-2.0.0.zip
@@ -50,3 +55,6 @@ BIMをobjに変換する場合はIfcConvertを使用します。以下のコマ�
 ### 5.複数の点群を一つの点群にまとめる
 複数の点群ファイルを一つに統一する場合、以下のコマンドを実行することで統合することが可能です。
 `python3 create_sampling_point_cloud.py -f file_1.pcd file_2.pcd ...`
+
+## License
+* 本ソフトウェアは[Apache-2.0 Licence]を適用します。
