@@ -2,7 +2,7 @@
 name = "pythoncitygmlrequest"
 version = "0.1.0"
 description = ""
-authors = ["Akifumi Ohata <mojanekonihiki@gmail.com>"]
+authors = ["Sensyn Robotics"]
 
 [tool.poetry.dependencies]
 python = ">=3.8,<3.10"
@@ -11,7 +11,7 @@ pyproj = "3.2.1"
 PyYAML = "6.0"
 Shapely = "1.8.2"
 trimesh = "3.12.6"
-open3d = ">=0.13"
+open3d = "0.15.2"
 pymeshlab = "^2022.2.post2"
 pyjpmesh = "^1.1.0"
 contexttimer = "^0.3.3"
