@@ -12,7 +12,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-f', '--point_cloud_files', nargs='+', help='list of file path ', required=True)
     parser.add_argument('--save_dir', type=str, default=str(Path.home().joinpath('CG2RM', 'pointcloud')))
-    parser.add_argument('--density', type=int, default=30)
+    parser.add_argument('-d','--density', type=float, default=30)
 
     args = parser.parse_args()
 
@@ -31,8 +31,9 @@ if __name__ == '__main__':
 
         # generate point cloud
         ms.load_new_mesh(str(input_obj_file))
-        print('sampling {} points ....'.format(area_size * density))
-        ms.generate_sampling_poisson_disk(samplenum=area_size * density)
+        sample_number = int(area_size * density)
+        print('sampling {} points ....'.format(sample_number))
+        ms.generate_sampling_poisson_disk(samplenum=sample_number)
 
         ply_file = str(save_directory.joinpath(input_obj_file.name.replace('.obj', '_sample.ply')))
         pcd_file = str(save_directory.joinpath(input_obj_file.name.replace('.obj', '_sample.pcd')))
