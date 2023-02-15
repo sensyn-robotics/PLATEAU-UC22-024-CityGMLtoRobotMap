@@ -11,7 +11,8 @@
 
 1. dependency
    sudo apt install -y build-essential curl libffi-dev libssl-dev zlib1g-dev liblzma-dev libbz2-dev libreadline-dev libsqlite3-dev libncurses5-dev
-   libncursesw5-dev tk-dev git
+   libncursesw5-dev tk-dev git 
+   sudo apt install default-jre
 
 2. install python 3.8 envirnment
 

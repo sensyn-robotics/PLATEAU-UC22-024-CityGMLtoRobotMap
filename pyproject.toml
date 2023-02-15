@@ -18,6 +18,7 @@ contexttimer = "^0.3.3"
 pyglet = "^1.5.26"
 Rtree = "^1.0.0"
 mapbox-earcut = "^1.0.1"
+networkx = "^3.0"
 
 [tool.poetry.dev-dependencies]
 
