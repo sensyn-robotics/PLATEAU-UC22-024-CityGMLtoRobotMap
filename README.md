@@ -20,9 +20,11 @@
 ## 3．利用手順
 基本的には [Github Pages](https://docs.github.com/ja/pages)を使い、初心者向けの手順書を作成ください。
 ### インストール方法
+編集中
 [Github Pages](https://docs.github.com/ja/pages)を参照してください。
 
 ### 使い方
+編集中
 [Github Pages](https://docs.github.com/ja/pages)を参照してください。
 
 ## ライセンス
