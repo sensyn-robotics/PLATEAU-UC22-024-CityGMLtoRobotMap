@@ -1,0 +1,16 @@
+{
+  "name": "citygml_to_robotmap",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx honkit build ./ ./honkit",
+    "start": "npx honkit serve ./ ./honkit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "honkit": "^4.0.4"
+  }
+}
