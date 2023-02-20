@@ -74,19 +74,21 @@ if __name__ == '__main__':
     parser.add_argument('--lat', type=float, default=35.6809591)
     parser.add_argument('--lon', type=float, default=139.7673068)
     parser.add_argument('--alt', type=float, default=17.0)
-    parser.add_argument('--mapcode_level')
+    parser.add_argument('--mapcode_level', type=str, default='third', choices=["first", "second", "third"])
     parser.add_argument('--save_dir', type=str, default=str(Path.home().joinpath('CG2RM', 'obj')))
     parser.add_argument('-u', '--update', action='store_true')
 
     args = parser.parse_args()
 
     first, second, third = specify_code(args.lat, args.lon)
-    print('first', first, 'second', second, 'third', third)
+    map_code_dict = {'first': first, 'second': second, 'third': third}
 
-    map_number = third  # args.number  # 53392575
+    print('first mapcode', first, 'second mapcode', second, 'third mapcode', third)
+
+    map_code_number = map_code_dict[args.mapcode_level]  # args.number  # 53392575
     source_dir = args.source_dir
     extension = "*.gml"
-    glob_gml_files = Path(source_dir).rglob(str(map_number) + extension)
+    glob_gml_files = Path(source_dir).rglob(str(map_code_number) + extension)
     target_part_list = ['bldg', 'brid', 'dem', 'tran']
     numbers_gml_file = []
 
@@ -97,7 +99,7 @@ if __name__ == '__main__':
                 numbers_gml_file.append(path)
 
     for item in numbers_gml_file:
-        print(item)
+        print("convert {}".format(item))
 
     # city gml to city json:  no coordinate trans
     for gml_file in numbers_gml_file:
