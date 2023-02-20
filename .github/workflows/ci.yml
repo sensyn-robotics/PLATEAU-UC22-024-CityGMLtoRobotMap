@@ -10,19 +10,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
-
-    - name: Setup Scala
-      uses: olafurpg/setup-scala@v10
-      with:
-        java-version: "adopt@1.8"
+      uses: actions/checkout@v3
 
     - name: Setup Node
       uses: actions/setup-node@v2
       with:
         node-version: '16.x'
-    - name: Install dependencies
-      run: yarn --frozen-lockfile
+
+    - name: Install honkit
+      run: npm install honkit --save-dev
 
     - name: Push to gh-pages
       uses: peaceiris/actions-gh-pages@v3
