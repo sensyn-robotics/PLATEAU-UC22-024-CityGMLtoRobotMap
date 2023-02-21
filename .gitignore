@@ -5,3 +5,4 @@ IfcConvert
 citygml-tools-*
 .DS_Store
 *.gml
+*.json
