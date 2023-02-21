@@ -4,3 +4,4 @@ __pycache__/
 IfcConvert
 citygml-tools-*
 .DS_Store
+*.gml

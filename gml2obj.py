@@ -12,23 +12,18 @@ from mesh_code_util import specify_code
 
 
 def reproject(CS: cityjson.CityJSON, target_epsg: int):
-    imp_digits = math.ceil(abs(math.log(1, 10)))
     CS.decompress()
-    # p1 = pyproj.Proj(init='epsg:%d' % (CS.get_epsg()))
-    # p2 = pyproj.Proj(init='epsg:%d' % (epsg))
+
     from_crs = 'epsg:%d' % (CS.get_epsg())
     to_crs = 'epsg:%d' % (target_epsg)
-    print("1", CS.j['vertices'][0])
     transformer = Transformer.from_crs(from_crs, to_crs)
     trans_points = list(transformer.itransform(CS.j['vertices']))
-    print("2", trans_points[0])
     CS.j['vertices'] = [list(item) for item in trans_points]
 
     CS.set_epsg(target_epsg)
     CS.update_bbox()
     CS.update_bbox_each_cityobjects(True)
-    # -- recompress by using the number of digits we had in original file
-    # CS.compress(1)
+
     return CS
 
 
@@ -41,7 +36,6 @@ def reproject_custom(CS: cityjson.CityJSON, lat: float, lon: float, altitude):
             "+z_0=-%.10f +k_0=1",base_point_longitude_, base_point_latitude_, base_point_altitude_);
     """
 
-    imp_digits = math.ceil(abs(math.log(1, 10)))
     CS.decompress()
     from_crs = 'epsg:%d' % (CS.get_epsg())
     to_crs = "+proj=etmerc +ellps=GRS80 +lon_0={} +lat_0={} +x_0=0 +y_0=0 +z_0={} +k_0=1".format(lon, lat, altitude)
@@ -52,8 +46,6 @@ def reproject_custom(CS: cityjson.CityJSON, lat: float, lon: float, altitude):
 
     CS.update_bbox()
     CS.update_bbox_each_cityobjects(True)
-    # -- recompress by using the number of digits we had in original file
-    # CS.compress(imp_digits)
 
 
 def print_vertex_centroid(CJ: cityjson.CityJSON):
@@ -63,20 +55,20 @@ def print_vertex_centroid(CJ: cityjson.CityJSON):
     ct[1] = mean(list(item[1] for item in points))
     ct[2] = mean(list(item[2] for item in points))
 
-    print('centroid calc', ct)
+    print("odj model's centroid", ct)
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    # parser.add_argument('city_json_file', type=str)
-    parser.add_argument('-s', '--source_dir', type=str, required=True)
-    parser.add_argument('--number', type=str, default='53392575')
-    parser.add_argument('--lat', type=float, default=35.6809591)
+    parser.add_argument('-s', '--source_dir', type=str, required=True,
+                        help='city gml source directory. ')
+    parser.add_argument('--lat', type=float, default=35.6809591, help='city gml source directory. ')
     parser.add_argument('--lon', type=float, default=139.7673068)
     parser.add_argument('--alt', type=float, default=17.0)
     parser.add_argument('--mapcode_level', type=str, default='third', choices=["first", "second", "third"])
     parser.add_argument('--save_dir', type=str, default=str(Path.home().joinpath('CG2RM', 'obj')))
     parser.add_argument('-u', '--update', action='store_true')
+    parser.add_argument('--lod', type=str, default=None, choices=["max", "1", "2", "3", "4"])
 
     args = parser.parse_args()
 
@@ -87,28 +79,51 @@ if __name__ == '__main__':
 
     map_code_number = map_code_dict[args.mapcode_level]  # args.number  # 53392575
     source_dir = args.source_dir
-    extension = "*.gml"
-    glob_gml_files = Path(source_dir).rglob(str(map_code_number) + extension)
-    target_part_list = ['bldg', 'brid', 'dem', 'tran']
-    numbers_gml_file = []
+    extension = "*[0-9].gml"
 
-    # search target gml files
-    for path in glob_gml_files:
-        for item in target_part_list:
+    all_glob_gml_files = Path(source_dir).rglob(str(map_code_number) + extension)
+    target_part_names = ['bldg', 'brid', 'dem', 'tran']
+    convert_target_to_cityjson_files = []
+
+    # search target gml files that have target name
+    for path in all_glob_gml_files:
+        for item in target_part_names:
             if str(item) in str(path):
-                numbers_gml_file.append(path)
+                convert_target_to_cityjson_files.append(path)
+                print("Convert target to obj :  {}".format(path))
 
-    for item in numbers_gml_file:
-        print("convert {}".format(item))
+    # filter lods in city gml
+    if args.lod is not None:
+        lods_dict = {'max': "1,2,3,4", "1": 1, "2": 2, "3": 3, "4": 4}
+
+        for i, gml_file in enumerate(convert_target_to_cityjson_files):
+            json_path = str(gml_file).replace('.gml', '.json')
+            lod_filterd_gml_file = Path(str(gml_file).replace('.gml', '__filtered_lods.gml'))
+            convert_target_to_cityjson_files[i] = lod_filterd_gml_file
+            if args.update:
+                print("filtering lods {}".format(lod_filterd_gml_file.name))
+                output_str = subprocess.run(
+                    ["citygml-tools-2.0.0/citygml-tools",
+                     "filter-lods",
+                     "--lod={}".format(lods_dict[args.lod]),
+                     "--mode=maximum",
+                     str(gml_file)],
+                    capture_output=True, text=True).stderr
+                print(output_str)
 
     # city gml to city json:  no coordinate trans
-    for gml_file in numbers_gml_file:
+    for gml_file in convert_target_to_cityjson_files:
         json_path = str(gml_file).replace('.gml', '.json')
         if not exists(json_path) or args.update:
-            subprocess.run(
+            print("converting  {} to city_json ".format(gml_file.name))
+
+            output_str = subprocess.run(
                 ["citygml-tools-2.0.0/citygml-tools",
                  "to-cityjson", "--vertex-precision=15", "--template-precision=15",
-                 "--cityjson-version=1.0", str(gml_file)])
+                 "--cityjson-version=1.0", str(gml_file)],
+                capture_output=True, text=True).stderr
+            print(output_str)
+
         else:
             print(json_path, 'is already exist')
 
@@ -116,38 +131,29 @@ if __name__ == '__main__':
     obj_save_directory = Path(args.save_dir)
     obj_save_directory.mkdir(exist_ok=True, parents=True)
 
-    for gml_path in numbers_gml_file:
-
-        # print(args.city_json_file)
+    for gml_path in convert_target_to_cityjson_files:
         input_gml_file = str(gml_path).replace('.gml', '.json')  # args.city_json_file
         obj_file = obj_save_directory.joinpath(gml_path.name.replace(".gml", ".obj"))
 
         if exists(obj_file) and (not args.update):
             print(obj_file, 'is already exist')
         else:
-            print('converting ', obj_file)
+            print('converting to ', obj_file)
             with open(input_gml_file, mode='r', encoding='utf-8-sig') as f:
                 CJ = cityjson.reader(file=f, ignore_duplicate_keys=True)
-                print(CJ.get_info())
-            # CJ.filter_lod()
-            # with Timer() as t1:
-            print("Before point 1", CJ.j['vertices'][0])
+
+            if CJ.is_empty():
+                print("WARN :{} has no information. Check file or lod level arg. ".format(input_gml_file))
+                continue
 
             # transform points from EPSG:6697 to base points
             CJ = reproject(CJ, 4326)  # 4326 = wgs84
 
             reproject_custom(CJ, args.lat, args.lon, args.alt)
-            # invert(CJ, 35.6457381, 139.7218593)
-            print("After point 1", CJ.j['vertices'][0])
-            print("bbox", CJ.get_bbox())
 
-            print_vertex_centroid(CJ)
-            # CJ.get_info()
+            # print_vertex_centroid(CJ)
             result_obj = CJ.export2obj().getvalue()
-            # print(result_obj)
-            # print("Elapsed_time for export obj:{0}".format(t1.elapsed) + "[sec]")
 
             with open(obj_file, mode='w') as out_file:
                 out_file.write(result_obj)
-
-        # # convert to obj
+                print('saved ', obj_file)
