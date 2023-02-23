@@ -29,11 +29,21 @@ mv sample_resource/bim/warehouse.obj ~/CG2RM/obj/
 
 
 ### blender を使ってある程度位置合わせ
-import obj into blender
+
+[File]>[Import]>[Wavefront(.obj)]
 
 <img src="images/import_columun.jpg" width="80%">
+
+Up Axis をZにする
+
 <img src="images/import_axis.jpg" width="30%">
+
+対象の建築物を選択
+
 <img src="images/view_import_warehouse_nad_map.jpg" width="80%">
+
+対象の建築物を移動（移動方法はBlenderの[操作方法参照](https://docs.blender.org/manual/ja/2.93/scene_layout/object/editing/transform/move.html)）
+
 <img src="images/view_trans_warehouse_by_hand.jpg" width="80%">
 
 ### obj から点群生成
@@ -51,13 +61,24 @@ python align_bim.py --source ~/CG2RM/pointcloud/warehouse_trans_sample.ply --tar
 赤く表示されているモデルは初期位置。黄色く表示されているモデルはプログラムにより自動調整された後のモデル位置。
 
 ### 元の都市モデル　objから特定の建物を取り除く　
+
 blender UI上で削除対象建築物を左クリックで選択  
+
 <img src="images/chice_for_remove.jpg" width="80%">  
+
 [delete]keyで削除  
-<img src="images/remove_result.jpg" width="80%">
-[A]を押すと残りのオブジェクト全選択　　
+
+<img src="images/remove_result.jpg" width="80%">  
+
+[A]を押すと残りのオブジェクト全選択
+　　
 <img src="images/output_select.jpg" width="80%">  
+
 [File]>[Export]>[Wavefront(.obj)]  
+
+<img src="images/output_setting.jpg" width="30%">  
+
+保存
 
 特定の建築物を取り除いたObjの点群を生成
 ```
