@@ -7,6 +7,7 @@
 5. 複数の点群を一つの点群にまとめる
 
 
+(sample_resource内のzipファイルを全て解凍してください)
 
 ### CityGMLをobjに変換
 ```
@@ -44,17 +45,19 @@ python create_sampling_point_cloud.py -f $HOME/CG2RM/obj/533915_dem_6697.obj  --
 ```
 python align_bim.py --source ~/CG2RM/pointcloud/warehouse_trans_sample.ply --target ~/CG2RM/pointcloud/53391597_bldg_6697_sample.ply  
 ```
+<img src="images/align_result.jpg" width="80%">
+赤く表示されているモデルは初期位置。黄色く表示されているモデルはプログラムにより自動調整された後のモデル位置。
 
 ### 元の都市モデル　objから特定の建物を取り除く　
-<img src="images/align_result.jpg" width="80%">
-
-use blender remove overwraped building
-
-<img src="images/chice_for_remove.jpg" width="80%">
+blender UI上で削除対象建築物を左クリックで選択  
+<img src="images/chice_for_remove.jpg" width="80%">  
+[delete]keyで削除  
 <img src="images/remove_result.jpg" width="80%">
+[A]を押すと残りのオブジェクト全選択　　
+<img src="images/output_select.jpg" width="80%">  
+[File]>[Export]>[Wavefront(.obj)]  
 
-<img src="images/output_select.jpg" width="80%">
-
+特定の建築物を取り除いたObjの点群を生成
 ```
 python create_sampling_point_cloud.py -f $HOME/CG2RM/obj/53391597_bldg_6697_removed.obj  --density 10
 ```
