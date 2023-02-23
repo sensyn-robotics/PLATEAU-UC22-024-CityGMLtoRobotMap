@@ -55,10 +55,13 @@ unzip IfcConvert-*-linux64.zip
 
 #### install CityGMLtoRobotMap python dependency 
 ````
+# 3.8.13をシステム全体で使いたい場合は global
 pyenv global 3.8.13
 
+# 3.8.13を特定のディレクトリ内だけで使いたい場合は、ディレクトリ内で local
 pyenv local 3.8.13
 
+python -V
 pip install --upgrade pip
 ````
 ````
