@@ -26,6 +26,9 @@ if __name__ == '__main__':
 
     for input_obj_file in input_files:
         mesh = trimesh.load_mesh(str(input_obj_file), file_type='obj')  # type:trimesh.base.Trimesh
+        if isinstance(mesh, trimesh.Scene):
+            mesh = trimesh.util.concatenate([trimesh.Trimesh(vertices=m.vertices, faces=m.faces) for m in mesh.geometry.values()])
+
         print('load', str(input_obj_file))
 
         full_area_size = int(mesh.area)

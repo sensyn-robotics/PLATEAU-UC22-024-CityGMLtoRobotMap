@@ -6,3 +6,5 @@ citygml-tools-*
 .DS_Store
 *.gml
 *.json
+*.ifc
+*.zip
