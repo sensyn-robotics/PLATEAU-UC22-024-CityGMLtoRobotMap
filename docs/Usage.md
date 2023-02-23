@@ -1,99 +1,107 @@
-# 使用手順・方法
+### 準備
+CityGML形式のデータが必要です。
 
+[3D都市モデル（Project PLATEAU）東京都23区](https://www.geospatial.jp/ckan/dataset/plateau-tokyo23ku)からCityGML形式のデータをダウンロードし解凍してください。70GBほどになります。
+以下では「~/Downlods/plateau-tokyo23ku」にデータがあると想定してツール使用時のコマンドを記述します。
+
+また、東京都以外の都市データも公開されています。[3D都市モデル（Project PLATEAU）ポータルサイト](https://www.geospatial.jp/ckan/dataset/plateau)
+
+# 使用方法
 1 - CityGMLをobjに変換  
-2 - （BIMを使う場合のみ）BIMをobjに変換  
-3 - obj から点群生成  
-4 - （BIMを使う場合のみ）obj(CityGMLから)とobj(BIM)の位置合わせを行う  
+2 - obj から点群生成  
+3 - （BIMを使う場合）BIM(ifc)をobjに変換
+4 - （BIMを使う場合）obj(CityGMLから)とobj(BIM)の位置合わせを行う  
 5 - 複数の点群を一つの点群にまとめる
+
+(注意：poetryにより構築したpython環境を使うためには`poetry shell`を実行しpoetry環境をactivateする必要があります。)
 
 ### 1.CityGMLをobjに変換
 
-
-#### create obj model from city gml
-CityGML形式のデータを データをダウンロードした後
-
-https://www.geospatial.jp/ckan/dataset/plateau-tokyo23kuからCityGML形式のデータをダウンロードし解凍します。
-
-「~/Downlods/plateau-tokyo23ku」にファイルがあるとします。
-を実行すると$HOME/CG2RM/obj の中にobjファイルが生成されます。
-
+以下を実行すると$HOME/CG2RM/obj の中にCityGMLから変換されたobjファイルが生成されます。$HOME/CG2RM/objはプログラムが自動的に作成します。
 ```
-python3 gml2obj.py　-s path/to/plateau_data/udx --lat 35.6895014 --lon 139.6917337 --alt 30 --mapcodelevel third
+python3 gml2obj.py　-s ~/Downlods/plateau-tokyo23ku/udx --lat 35.6895014 --lon 139.6917337 --alt 30 --mapcode＿level third
 ```
-
+オプション
 ```
 usage: gml2obj.py [-h] -s SOURCE_DIR --lat LAT --lon LON --alt ALT [--save_dir SAVE_DIR] [-u] [--mapcode_level {first,second,third}] [--lod {max,1,2,3,4}]
 
 optional arguments:
   -h, --help            show this help message and exit
-  -s SOURCE_DIR, --source_dir SOURCE_DIR
-                        pass city gml source directory.
-  --lat LAT             Latitude
-  --lon LON             Longitude
-  --alt ALT             Altitude
-  --save_dir SAVE_DIR   output directory
-  -u, --update          over write already generated cityjson, filterd_lods.gml files.
-  --mapcode_level {first,second,third}
-                        map mesh code. first code include large area. third code include small area.
-  --lod {max,1,2,3,4}   extract lods. if use choose 1~4 , this filter only extract same level lods. If you choose max. extract max level lod from same building.
+  -s SOURCE_DIR, --source_dir SOURCE_DIR　CityGMLを含むディレクトリか、CityGMLファイルを渡してください。ディレクトリであれば自動で内部のCityGMLを探します。
+  --lat LAT             Latitude　緯度
+  --lon LON             Longitude　経度
+  --alt ALT             Altitude 高さ
+  --save_dir SAVE_DIR   
+  -u, --update          中間生成ファイルを上書きします
+  --mapcode_level {first,second,third}　変換対象エリアを定めます。1次メッシュ、2次メッシュ、3次メッシュ
+  --lod {max,1,2,3,4}   一つの建物が複数のLODを持つ場合、maxを指定すると一番レベルが高いものを抽出。1,2,3,4いずれかであれば指定のレベルのLODのみ抽出します。
 
 ```
+大まかな処理の流れ
+1. 指定した緯度経度を含む地域メッシュコードを特定
+2. 対象のメッシュコードを含むファイルを探索・特定
+3. 指定したlod level情報を抽出
+4. 指定した緯度経度を原点とした3d情報へと変換
+5. objファイルへ変換・保存
+
+* 地域メッシュについて(https://nlftp.mlit.go.jp/ksj/old/old_data_mesh.html)
 
 
 
-また,次のコマンドを使用することで生成したobjファイルを表示することができます。
+次のコマンドを使用することで生成したobjファイルを表示することができます。
 ```
 python3 view_obj.py $HOME/CG2RM/obj_file.obj
 ```
 
-
-### 2.BIMを使う場合のみ）BIMをobjに変換
-
-BIMをobjに変換する場合はIfcConvertを使用します。以下のコマンドで変換を行います。
-```
-./IfcConvert input_bim.ifc output_obj.obj
-```
-
-### 3.obj から点群生成
-
-生成したobjファイルからメッシュ表面をサンプリングすることで点群を生成します。以下のコマンドで実行します。densityは面積あたりにサンプリングする点群の数の目安です。
+### 2.obj から点群生成
+生成したobjファイルのメッシュ表面をサンプリングすることで点群を生成します。densityは面積あたりにサンプリングする点群の数の目安です。
+コマンドを実行すると$HOME/CG2RM/pointcloud の中にply,とpcdファイルが生成されます。plyファイルは[cloud comapre](https://www.danielgm.net/cc/)などで表示して確認が可能です。
 ```
 python create_sampling_point_cloud.py -f $HOME/CG2RM/obj/obj_file.obj --density 30
 ```
 
+オプション
 ```
 usage: create_sampling_point_cloud.py [-h] -f POINT_CLOUD_FILES [POINT_CLOUD_FILES ...] [--save_dir SAVE_DIR] [-d DENSITY]
 
 optional arguments:
   -h, --help            show this help message and exit
-  -f POINT_CLOUD_FILES [POINT_CLOUD_FILES ...], --point_cloud_files POINT_CLOUD_FILES [POINT_CLOUD_FILES ...]
-                        list of file path
+  -f POINT_CLOUD_FILES 変換対象のobjファイルのパス。同時に複数指定できます。
   --save_dir SAVE_DIR
-  -d DENSITY, --density DENSITY
+  -d DENSITY, --density DENSITY　面積あたりにサンプリングする点群の数
 
 ```
-コマンドを実行すると$HOME/CG2RM/pointcloud の中にply,とpcdファイルが生成されます。
 
-### 4.（BIMを使う場合のみ）obj(CityGMLから)とobj(BIM)の位置合わせを行う
 
-位置合わせを行いたいobj(CityGMLから)とobj(BIM)とそれぞれから生成された点群を指定し
+### 3.BIMを使う場合）BIMをobj・点群に変換
+
+BIMをobjに変換する場合はIfcConvertを使用します。以下のようにコマンドで変換を行います。
 ```
-python3 align_bim.py
+./IfcConvert input_bim.ifc output_obj.obj
 ```
+objに変換された後は、2と同様に点群への変換が可能です。
 
+### 4.（BIMを使う場合）obj(CityGMLから)とobj(BIM)の位置合わせを行う
+
+位置合わせを行いたいCityGMLとBIMとそれぞれから生成された点群を指定し
+```
+python align_bim.py --source ~/CG2RM/pointcloud/bim_model.ply --target ~/CG2RM/pointcloud/CityGML_model.ply  
+```
+オプション
 ```
 usage: align_bim.py [-h] --source SOURCE --target TARGET [--save_dir SAVE_DIR] [--offset [OFFSET [OFFSET ...]]]
 
 optional arguments:
   -h, --help            show this help message and exit
-  --source SOURCE
-  --target TARGET
+  --source SOURCE 位置を変化させて位置合わせを行いたい点群
+  --target TARGET　位置合わせの基準となる点群
   --save_dir SAVE_DIR
-  --offset [OFFSET [OFFSET ...]]
-                        a list of float variables
+  --offset [x,y,z,ywa,roll,pitch] 位置合わせ前にオフセットさせる際の値
+                        
 
 ```
-コマンドを実行することでCityGMLが持つ座標系に合うようにBIMを位置調整した結果が得られます。
+コマンドを実行することでCityGMLが持つ座標系に合うように位置調整したBIMが結果として得られます。  
+自動調整には限界があるため、うまく一致しない場合はBlenderなどのソフトを使って手動で調整することも可能です。
 
 ### 5.複数の点群を一つの点群にまとめる
 
@@ -101,14 +109,13 @@ optional arguments:
 ````
 python3 merge_multi_point_cloud.py -f file_1.pcd file_2.pcd ...
 ````
-
+オプション
 ```
 usage: merge_multi_point_cloud.py [-h] -f POINT_CLOUD_FILES [POINT_CLOUD_FILES ...] [-t {ply,pcd}] [--save_dir SAVE_DIR]
 
 optional arguments:
   -h, --help            show this help message and exit
-  -f POINT_CLOUD_FILES [POINT_CLOUD_FILES ...], --point_cloud_files POINT_CLOUD_FILES [POINT_CLOUD_FILES ...]
-                        list of file path
+  -f POINT_CLOUD_FILES 統合したい点群ファイルのリスト
   -t {ply,pcd}, --type {ply,pcd}
   --save_dir SAVE_DIR
 
