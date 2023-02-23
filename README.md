@@ -18,7 +18,6 @@
 また、3D都市モデル（建築物モデルLOD2）とBIMモデルという形式の異なる２つのモデルを同一のマップに表示するために、それぞれのモデルに原点座標を持たせて統合し、PCL（Point Cloud Library）を使って点群マップ化する方法を構築しました。
 
 ## 3．利用手順
-基本的には [Github Pages](https://docs.github.com/ja/pages)を使い、初心者向けの手順書を作成ください。
 ### インストール方法
 [Install](https://sensyn-robotics.github.io/PLATEAU-UC22-024-CityGMLtoRobotMap/Install.html)を参照してください。
 
