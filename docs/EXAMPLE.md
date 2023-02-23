@@ -17,6 +17,7 @@ import obj into blender
 python create_sampling_point_cloud.py -f $HOME/CG2RM/obj/53391597_bldg_6697.obj ./sample_resource/bim/warehouse_trans.obj --density 10
 
 python align_bim.py --source ~/CG2RM/pointcloud/warehouse_trans_sample.ply --target ~/CG2RM/pointcloud/53391597_bldg_6697_sample.ply 
+<img src="images/align_result.jpg" width="50%">
 
 use blender remove overwraped building
 
