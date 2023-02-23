@@ -39,9 +39,11 @@ import obj into blender
 ### obj から点群生成
 ```
 python create_sampling_point_cloud.py -f $HOME/CG2RM/obj/53391597_bldg_6697.obj ./sample_resource/bim/warehouse_trans.obj --density 10  
+
 python create_sampling_point_cloud.py -f $HOME/CG2RM/obj/533915_dem_6697.obj  --density 0.1  
 ```
 ### CityGMLとBIMの位置合わせを行う 
+()()
 ```
 python align_bim.py --source ~/CG2RM/pointcloud/warehouse_trans_sample.ply --target ~/CG2RM/pointcloud/53391597_bldg_6697_sample.ply  
 ```
@@ -64,5 +66,8 @@ python create_sampling_point_cloud.py -f $HOME/CG2RM/obj/53391597_bldg_6697_remo
 
 ### 複数の点群をマージする
 ```
-python merge_multi_point_cloud.py -f ~/CG2RM/pointcloud/warehouse_trans_sample.pcd ~/CG2RM/pointcloud/53391597_bldg_6697_removed_sample.pcd
+python merge_multi_point_cloud.py -f ~/CG2RM/pointcloud/warehouse_trans_sample.pcd ~/CG2RM/pointcloud/53391597_bldg_6697_removed_sample.pcd ~/CG2RM/pointcloud/533915_dem_6697_sample.pcd
 ```
+
+<img src="images/merged_points.jpg" width="80%">  
+

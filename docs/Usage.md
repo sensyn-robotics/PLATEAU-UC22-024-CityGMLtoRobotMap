@@ -118,7 +118,7 @@ usage: merge_multi_point_cloud.py [-h] -f POINT_CLOUD_FILES [POINT_CLOUD_FILES .
 optional arguments:
   -h, --help            show this help message and exit
   -f POINT_CLOUD_FILES 統合したい点群ファイルのリスト
-  -t {ply,pcd}, --type {ply,pcd}
+  -n NAME, --name NAME 
   --save_dir SAVE_DIR
 
 ```
