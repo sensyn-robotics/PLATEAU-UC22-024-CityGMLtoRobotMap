@@ -20,12 +20,10 @@
 ## 3．利用手順
 基本的には [Github Pages](https://docs.github.com/ja/pages)を使い、初心者向けの手順書を作成ください。
 ### インストール方法
-編集中
-[Github Pages](https://docs.github.com/ja/pages)を参照してください。
+[Install](https://sensyn-robotics.github.io/PLATEAU-UC22-024-CityGMLtoRobotMap/Install.html)を参照してください。
 
 ### 使い方
-編集中
-[Github Pages](https://docs.github.com/ja/pages)を参照してください。
+[Usage](https://sensyn-robotics.github.io/PLATEAU-UC22-024-CityGMLtoRobotMap/Usage.html)を参照してください。
 
 ## ライセンス
 * ソースコードおよび関連ドキュメントの著作権は国土交通省に帰属します。
