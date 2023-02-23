@@ -48,7 +48,8 @@ unzip citygml-tools-2.0.0.zip
 
 #### Download [IfcConverter](https://blenderbim.org/docs-python/ifcconvert/installation.html) （BIMを使う場合）
 ````
-wget --content-disposition https://s3.amazonaws.com/ifcopenshell-builds/IfcConvert-v0.7.0-07ee62e-linux64.zip
+# operation checked on only ubuntu18 
+wget --content-disposition https://s3.amazonaws.com/ifcopenshell-builds/IfcConvert-v0.6.0-0087fa8-linux64.zip
 unzip IfcConvert-*-linux64.zip
 ````
 

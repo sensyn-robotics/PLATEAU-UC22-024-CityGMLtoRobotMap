@@ -8,29 +8,44 @@
 
 ### 1.CityGMLをobjに変換
 
-CityGML形式のデータを
 
 #### create obj model from city gml
+CityGML形式のデータを データをダウンロードした後
 
 https://www.geospatial.jp/ckan/dataset/plateau-tokyo23kuからCityGML形式のデータをダウンロードし解凍します。
 
 「~/Downlods/plateau-tokyo23ku」にファイルがあるとします。
-データをダウンロードした後
+を実行すると$HOME/CG2RM/obj の中にobjファイルが生成されます。
+
 ```
 python3 gml2obj.py　-s path/to/plateau_data/udx --lat 35.6895014 --lon 139.6917337 --alt 30 --mapcodelevel third
 ```
 
-を実行すると$HOME/CG2RM/obj の中にobjファイルが生成されます。
+```
+usage: gml2obj.py [-h] -s SOURCE_DIR --lat LAT --lon LON --alt ALT [--save_dir SAVE_DIR] [-u] [--mapcode_level {first,second,third}] [--lod {max,1,2,3,4}]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -s SOURCE_DIR, --source_dir SOURCE_DIR
+                        pass city gml source directory.
+  --lat LAT             Latitude
+  --lon LON             Longitude
+  --alt ALT             Altitude
+  --save_dir SAVE_DIR   output directory
+  -u, --update          over write already generated cityjson, filterd_lods.gml files.
+  --mapcode_level {first,second,third}
+                        map mesh code. first code include large area. third code include small area.
+  --lod {max,1,2,3,4}   extract lods. if use choose 1~4 , this filter only extract same level lods. If you choose max. extract max level lod from same building.
+
+```
+
+
+
 また,次のコマンドを使用することで生成したobjファイルを表示することができます。
 ```
 python3 view_obj.py $HOME/CG2RM/obj_file.obj
 ```
 
-##### extract lod3
-
-```
-./citygml-tools-2.0.0/citygml-tools filter-lods --lod=3 --mode=maximum *.gml
-```
 
 ### 2.BIMを使う場合のみ）BIMをobjに変換
 
@@ -44,6 +59,18 @@ BIMをobjに変換する場合はIfcConvertを使用します。以下のコマ�
 生成したobjファイルからメッシュ表面をサンプリングすることで点群を生成します。以下のコマンドで実行します。densityは面積あたりにサンプリングする点群の数の目安です。
 ```
 python create_sampling_point_cloud.py -f $HOME/CG2RM/obj/obj_file.obj --density 30
+```
+
+```
+usage: create_sampling_point_cloud.py [-h] -f POINT_CLOUD_FILES [POINT_CLOUD_FILES ...] [--save_dir SAVE_DIR] [-d DENSITY]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -f POINT_CLOUD_FILES [POINT_CLOUD_FILES ...], --point_cloud_files POINT_CLOUD_FILES [POINT_CLOUD_FILES ...]
+                        list of file path
+  --save_dir SAVE_DIR
+  -d DENSITY, --density DENSITY
+
 ```
 コマンドを実行すると$HOME/CG2RM/pointcloud の中にply,とpcdファイルが生成されます。
 
