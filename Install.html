@@ -193,6 +193,7 @@
 <pre><code>sudo apt install -y build-essential  libffi-dev libssl-dev zlib1g-dev liblzma-dev libbz2-dev libreadline-dev libsqlite3-dev libncurses5-dev libncursesw5-dev tk-dev  
 sudo apt install -y curl wget  git default-jre
 </code></pre><h3 id="2-install-pyenv-and-python-38">2. install pyenv and python 3.8</h3>
+<p>python 3.8環境を導入するためにここではpyenvを紹介しますが、他の方法でも問題ありません。</p>
 <h5 id="download-pyenv">download pyenv</h5>
 <pre><code>curl https://pyenv.run | bash
 </code></pre><h5 id="set-envirnment-values-and-activate-pyenv">set envirnment values and activate pyenv</h5>
@@ -200,11 +201,17 @@ sudo apt install -y curl wget  git default-jre
 echo &apos;command -v pyenv &gt;/dev/null || export PATH=&quot;$PYENV_ROOT/bin:$PATH&quot;&apos; &gt;&gt; ~/.bashrc
 echo &apos;eval &quot;$(pyenv init -)&quot;&apos; &gt;&gt; ~/.bashrc
 source ~/.bashrc
-</code></pre><h5 id="install-specific-version-python">install specific version python</h5>
+</code></pre><h5 id="install-and-activate-specific-version-python">install and activate specific version python</h5>
 <pre><code>pyenv install 3.8.13
+</code></pre><pre><code># 3.8.13をシステム全体で使いたい場合は global　optionを使う
 pyenv global 3.8.13
+
+# 3.8.13を特定のディレクトリ内だけで使いたい場合は、環境を使用したいディレクトリ内で local optionを使う
+pyenv local 3.8.13
+
+python -V
 pip install --upgrade pip
-</code></pre><h2 id="citygmltorobotmap-インストール方法">CityGMLtoRobotMap インストール方法</h2>
+</code></pre><h2 id="3-install-citygmltorobotmap">3. Install CityGMLtoRobotMap</h2>
 <h4 id="clone-citygmltorobotmap">Clone CityGMLtoRobotMap</h4>
 <pre><code>git clone https://github.com/sensyn-robotics/PLATEAU-UC22-024-CityGMLtoRobotMap CityGMLtoRobotMap
 cd ./CityGMLtoRobotMap
@@ -217,15 +224,7 @@ unzip citygml-tools-2.0.0.zip
 wget --content-disposition https://s3.amazonaws.com/ifcopenshell-builds/IfcConvert-v0.6.0-0087fa8-linux64.zip
 unzip IfcConvert-*-linux64.zip
 </code></pre><h4 id="install-citygmltorobotmap-python-dependency">install CityGMLtoRobotMap python dependency</h4>
-<pre><code># 3.8.13をシステム全体で使いたい場合は global
-pyenv global 3.8.13
-
-# 3.8.13を特定のディレクトリ内だけで使いたい場合は、ディレクトリ内で local
-pyenv local 3.8.13
-
-python -V
-pip install --upgrade pip
-</code></pre><pre><code>pip install poetry
+<pre><code>pip install poetry
 poetry install
 # swich into poetry environment
 poetry shell
@@ -272,7 +271,7 @@ poetry shell
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Install","level":"1.2","depth":1,"next":{"title":"Usage","level":"1.3","depth":1,"path":"Usage.md","ref":"Usage.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Install.md","mtime":"2023-02-23T11:50:02.178Z","type":"markdown"},"gitbook":{"version":"4.0.4","time":"2023-02-23T11:50:16.777Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Install","level":"1.2","depth":1,"next":{"title":"Usage","level":"1.3","depth":1,"path":"Usage.md","ref":"Usage.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Install.md","mtime":"2023-02-23T12:10:10.157Z","type":"markdown"},"gitbook":{"version":"4.0.4","time":"2023-02-23T12:10:18.833Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
