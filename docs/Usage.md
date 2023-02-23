@@ -18,8 +18,13 @@ https://www.geospatial.jp/ckan/dataset/plateau-tokyo23kuからCityGML形式の�
 を実行すると$HOME/CG2RM/obj の中にobjファイルが生成されます。
 
 ```
-python3 gml2obj.py　-s path/to/plateau_data/udx --lat 35.6895014 --lon 139.6917337 --alt 30 --mapcodelevel third
+python3 gml2obj.py　-s ~/Downlods/plateau-tokyo23ku/udx --lat 35.6895014 --lon 139.6917337 --alt 30 --mapcode＿level third
 ```
+(注意：poetryにより設定したpython環境を使うためには`poetry shell`を実行しpoetry環境をactivateする必要があります。)
+
+を実行すると自動的に作成される　$HOME/CG2RM/obj ディレクトリの中にobjファイルが生成されます。
+
+* 地域メッシュについて(https://nlftp.mlit.go.jp/ksj/old/old_data_mesh.html)
 
 ```
 usage: gml2obj.py [-h] -s SOURCE_DIR --lat LAT --lon LON --alt ALT [--save_dir SAVE_DIR] [-u] [--mapcode_level {first,second,third}] [--lod {max,1,2,3,4}]
@@ -49,7 +54,7 @@ python3 view_obj.py $HOME/CG2RM/obj_file.obj
 
 ### 2.BIMを使う場合のみ）BIMをobjに変換
 
-BIMをobjに変換する場合はIfcConvertを使用します。以下のコマンドで変換を行います。
+BIMをobjに変換する場合はIfcConvertを使用します。以下のようにコマンドで変換を行います。
 ```
 ./IfcConvert input_bim.ifc output_obj.obj
 ```
