@@ -1,15 +1,16 @@
 ### サンプルデータを使ったGityGMltoRobotoMapの使用方法を解説します。
 
 1. CityGMLをobjに変換
-2. obj から点群生成
+2. CityGML生成したobjを点群化
 3. BIM(ifc)をobjに変換 
-4. CityGMLとBIMの位置合わせを行う   
-5. 複数の点群を一つの点群にまとめる
+4. CityGMLとBIMの位置合わせを行う(パターン１、パターン２)  
+5. CityGML生成したobjから特定の建物を取り除く 
+6. 複数の点群を一つの点群にまとめる
 
 
 (sample_resource内のzipファイルを全て解凍してください)
 
-### CityGMLをobjに変換
+### 1. CityGMLをobjに変換
 ```
 # conver building information
 python gml2obj.py -s ./sample_resource/city_gml/udx/ --lat 35.4987030455 --lon 139.72337047 --alt 38.5293235779 --mapcode_level third
@@ -21,20 +22,21 @@ python gml2obj.py -s ./sample_resource/city_gml/udx/dem/533915_dem_6697.gml --la
 ```
 
 
-### 都市モデル obj から点群生成
+### 2. CityGML生成したobjを点群化
 ```
 python create_sampling_point_cloud.py -f $HOME/CG2RM/obj/53391597_bldg_6697.obj  --density 10  
 python create_sampling_point_cloud.py -f $HOME/CG2RM/obj/533915_dem_6697.obj  --density 1 -x 250 -y 250 
 
 ```
 
-### BIM(ifc)をobjに変換 
+### 3. BIM(ifc)をobjに変換 
 ```
 ./IfcConvert sample_resource/bim/warehouse.ifc ~/CG2RM/obj/warehouse.obj
 ```
 
 
-### （CityGMLとBIMの位置合わせを行う　パターン１）, blender を使ってある程度位置合わせた後、プログラムによるCityGMLとBIMの位置合わせを行う
+### 4. CityGMLとBIMの位置合わせを行う　(パターン１)
+#### blender を使ってある程度位置合わせた後、プログラムによるCityGMLとBIMの位置合わせを行う
 
 #### blender を使ってある程度位置合わせを行う
 [File]>[Import]>[Wavefront(.obj)]
@@ -73,7 +75,8 @@ python align_bim.py --source ~/CG2RM/pointcloud/warehouse_trans_sample.ply --tar
 赤く表示されているモデルは初期位置。黄色く表示されているモデルはプログラムにより自動調整された後のモデル位置。
 位置変換後の結果obj,ply,pcdは"~/CG2RM/transformed"内に保存されます。
 
-### （CityGMLとBIMの位置合わせを行う　パターン２）Blenderのみで位置調整したモデルを使う
+### 4. CityGMLとBIMの位置合わせを行う　(パターン２)
+#### Blenderのみで位置調整したモデルを使う
 事前にBlenderを使って手動で位置合わせしたモデルを使います
 ```
 # ./sample_resource/bim/warehouse_trans.obj は事前にblenderで位置調整したモデルです。
@@ -81,7 +84,7 @@ python create_sampling_point_cloud.py -f ./sample_resource/bim/warehouse_trans.o
 
 ```
 
-### 元の都市モデル　objから特定の建物を取り除く　
+### 5. CityGML生成したobjから特定の建物を取り除く　
 
 blender UI上で削除対象建築物を左クリックで選択  
 
@@ -101,12 +104,12 @@ blender UI上で削除対象建築物を左クリックで選択
 
 Up AxisをZにして　53391597_bldg_6697_removed.obj　という名前で"$HOME/CG2RM/obj/"に保存
 
-### 特定の建築物を取り除いたObjの点群を生成
+#### 特定の建築物を取り除いたObjの点群を生成
 ```
 python create_sampling_point_cloud.py -f $HOME/CG2RM/obj/53391597_bldg_6697_removed.obj  --density 10
 ```
 
-### 複数の点群をマージする
+### 6. 複数の点群をマージする
 ```
 python merge_multi_point_cloud.py -f ~/CG2RM/pointcloud/warehouse_trans_sample.pcd ~/CG2RM/pointcloud/53391597_bldg_6697_removed_sample.pcd ~/CG2RM/pointcloud/533915_dem_6697_sample.pcd
 ```

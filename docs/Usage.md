@@ -1,24 +1,28 @@
 ### 準備
 CityGML形式のデータが必要です。
 
-[3D都市モデル（Project PLATEAU）東京都23区](https://www.geospatial.jp/ckan/dataset/plateau-tokyo23ku)からCityGML形式のデータをダウンロードし解凍してください。70GBほどになります。
-以下では「~/Downlods/plateau-tokyo23ku」にデータがあると想定してツール使用時のコマンドを記述します。
+[3D都市モデル（Project PLATEAU）東京都23区](https://www.geospatial.jp/ckan/dataset/plateau-tokyo23ku)からCityGML形式のデータをダウンロードし解凍してください。
+または、* [Example](EXAMPLE.md)　にあるようにレポジトリ内にあるサンプルデータを使ってください。
+
 
 また、東京都以外の都市データも公開されています。[3D都市モデル（Project PLATEAU）ポータルサイト](https://www.geospatial.jp/ckan/dataset/plateau)
 
 # 各ツール使用方法・手順
-1. CityGMLをobjに変換
-2. obj から点群生成
-3. （BIMを使う場合）BIM(ifc)をobjに変換 
-4. （BIMを使う場合）CityGMLとBIMの位置合わせを行う   
-5. 複数の点群を一つの点群にまとめる
+1. CityGMLをobjに変換する機能
+2. obj から点群を生成する機能
+3. BIM(ifc)をobjに変換する機能 
+4. CityGMLとBIMの位置合わせを行う機能   
+5. 複数の点群を一つの点群にまとめる機能
 
 (注意：poetryにより構築したpython環境を使うためには`poetry shell`を実行しpoetry環境をactivateする必要があります。)
 
 ### 1.CityGMLをobjに変換
 
 以下を実行すると$HOME/CG2RM/obj の中にCityGMLから変換されたobjファイルが生成されます。$HOME/CG2RM/objはプログラムが自動的に作成します。
-ここで指定している緯度経度は 【東京都庁所在地】 緯度：35.6895014 経度：139.6917337 高さ：0 となっています。
+
+ここでは「~/Downlods/plateau-tokyo23ku」にデータがあると想定してツール使用時のコマンドを記述します。
+指定している緯度経度は 【東京都庁所在地】 緯度：35.6895014 経度：139.6917337 高さ：0 となっています。
+
 
 ```
 python gml2obj.py　-s ~/Downlods/plateau-tokyo23ku/udx --lat 35.6895014 --lon 139.6917337 --alt 30 --mapcode＿level third

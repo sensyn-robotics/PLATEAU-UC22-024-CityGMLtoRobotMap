@@ -10,6 +10,7 @@ sudo apt install -y build-essential  libffi-dev libssl-dev zlib1g-dev liblzma-de
 sudo apt install -y curl wget  git default-jre
 ```
 ### 2. install pyenv and python 3.8 
+python 3.8環境を導入するためにここではpyenvを紹介しますが、他の方法でも問題ありません。
 
 ##### download pyenv
 ````
@@ -24,15 +25,22 @@ echo 'eval "$(pyenv init -)"' >> ~/.bashrc
 source ~/.bashrc
 ````
 
-##### install specific version python
+##### install and activate specific version python
 ````
 pyenv install 3.8.13
+````
+````
+# 3.8.13をシステム全体で使いたい場合は global　optionを使う
 pyenv global 3.8.13
+
+# 3.8.13を特定のディレクトリ内だけで使いたい場合は、環境を使用したいディレクトリ内で local optionを使う
+pyenv local 3.8.13
+
+python -V
 pip install --upgrade pip
 ````
 
-
-## CityGMLtoRobotMap インストール方法 
+## 3. Install CityGMLtoRobotMap 
 #### Clone CityGMLtoRobotMap
 ````
 git clone https://github.com/sensyn-robotics/PLATEAU-UC22-024-CityGMLtoRobotMap CityGMLtoRobotMap
@@ -54,16 +62,7 @@ unzip IfcConvert-*-linux64.zip
 ````
 
 #### install CityGMLtoRobotMap python dependency 
-````
-# 3.8.13をシステム全体で使いたい場合は global
-pyenv global 3.8.13
 
-# 3.8.13を特定のディレクトリ内だけで使いたい場合は、ディレクトリ内で local
-pyenv local 3.8.13
-
-python -V
-pip install --upgrade pip
-````
 ````
 pip install poetry
 poetry install
