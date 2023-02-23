@@ -3,7 +3,7 @@
 <html lang="" >
     <head>
         <meta charset="UTF-8">
-        <title>Introduction · HonKit</title>
+        <title>Example · HonKit</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="HonKit 4.0.4">
@@ -56,8 +56,8 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="Install.html" />
     
+    <link rel="prev" href="Usage.html" />
     
 
     </head>
@@ -86,7 +86,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -125,7 +125,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4" data-path="EXAMPLE.html">
+        <li class="chapter active" data-level="1.4" data-path="EXAMPLE.html">
             
                 <a href="EXAMPLE.html">
             
@@ -168,7 +168,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >Example</a>
     </h1>
 </div>
 
@@ -183,11 +183,13 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="introduction">Introduction</h1>
-<h2 id="citygmltorobotmap">CityGMLtoRobotMap</h2>
-<ul>
-<li>「CityGMLtoRobotMap」はCityGMLをRobotが自己位置推定などで使用できる環境地図として変換するためのツール群です。CityGMLからOBJ形式への形式変換・座標変換の機能、OBJファイルの表面をサンプリングして点群を生成できる機能、BIMとCityGMLのマージ機能があります。</li>
-</ul>
+                                <p>python gml2obj.py -s ./sample_resource/city_gml/udx/ --lat 35.4987030455 --lon 139.72337047 --alt 38.5293235779 --mapcode_level third</p>
+<p>python gml2obj.py -s ./sample_resource/city_gml/udx/dem/533915_dem_6697.gml --lat 35.4987030455 --lon 139.72337047 --alt 38.5293235779</p>
+<p>./IfcConvert sample_resource/bim/warehouse.ifc sample_resource/bim/warehouse.obj</p>
+<p>mv warehouse.obj ~/CG2RM/obj/</p>
+<p>use blender</p>
+<p>python create_sampling_point_cloud.py -f $HOME/CG2RM/obj/53391597_bldg_6697.obj ./sample_resource/bim/warehouse_trans.obj --density 10</p>
+<p>python align_bim.py --source ~/CG2RM/pointcloud/warehouse_trans_sample.ply --target ~/CG2RM/pointcloud/53391597_bldg_6697_sample.ply </p>
 
                                 
                                 </section>
@@ -215,10 +217,10 @@
 
             
                 
-                
-                <a href="Install.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Install">
-                    <i class="fa fa-angle-right"></i>
+                <a href="Usage.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Usage">
+                    <i class="fa fa-angle-left"></i>
                 </a>
+                
                 
             
         
@@ -227,7 +229,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"Install","level":"1.2","depth":1,"path":"Install.md","ref":"Install.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2023-02-23T05:30:44.657Z","type":"markdown"},"gitbook":{"version":"4.0.4","time":"2023-02-23T05:30:58.366Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Example","level":"1.4","depth":1,"previous":{"title":"Usage","level":"1.3","depth":1,"path":"Usage.md","ref":"Usage.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"EXAMPLE.md","mtime":"2023-02-23T05:30:44.657Z","type":"markdown"},"gitbook":{"version":"4.0.4","time":"2023-02-23T05:30:58.366Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
