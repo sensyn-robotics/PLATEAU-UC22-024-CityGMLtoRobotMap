@@ -61,27 +61,33 @@ def print_vertex_centroid(CJ: cityjson.CityJSON):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-s', '--source_dir', type=str, required=True,
-                        help='city gml source directory. ')
-    parser.add_argument('--lat', type=float, default=35.6809591, help='city gml source directory. ')
-    parser.add_argument('--lon', type=float, default=139.7673068)
-    parser.add_argument('--alt', type=float, default=17.0)
-    parser.add_argument('--mapcode_level', type=str, default='third', choices=["first", "second", "third"])
-    parser.add_argument('--save_dir', type=str, default=str(Path.home().joinpath('CG2RM', 'obj')))
-    parser.add_argument('-u', '--update', action='store_true')
-    parser.add_argument('--lod', type=str, default=None, choices=["max", "1", "2", "3", "4"])
+                        help='pass city gml source directory or file. If you pass directory, .gml files in that directory will be serached for and coonverted . If you pass a file,that file will be converted.')
+    parser.add_argument('--lat', type=float, default=35.6809591, required=True, help='Latitude')
+    parser.add_argument('--lon', type=float, default=139.7673068, required=True, help='Longitude ')
+    parser.add_argument('--alt', type=float, default=17.0, required=True, help='Altitude')
+    parser.add_argument('--save_dir', type=str, default=str(Path.home().joinpath('CG2RM', 'obj')), help='output directory')
+    parser.add_argument('-u', '--update', action='store_true', help='over write already generated cityjson, filterd_lods.gml files.')
+    parser.add_argument('--mapcode_level', type=str, default='third', choices=["first", "second", "third"],
+                        help='map mesh code. first code include large area. third code include small area.')
+    parser.add_argument('--lod', type=str, default=None, choices=["max", "1", "2", "3", "4"],
+                        help='extract lods. if use choose 1~4 , this filter only extract same level lods. If you choose max. extract max level lod from same building.')
 
     args = parser.parse_args()
 
     first, second, third = specify_code(args.lat, args.lon)
     map_code_dict = {'first': first, 'second': second, 'third': third}
 
-    print('first mapcode', first, 'second mapcode', second, 'third mapcode', third)
-
     map_code_number = map_code_dict[args.mapcode_level]  # args.number  # 53392575
     source_dir = args.source_dir
     extension = "*[0-9].gml"
+    all_glob_gml_files = []
 
-    all_glob_gml_files = Path(source_dir).rglob(str(map_code_number) + extension)
+    if Path(source_dir).is_dir():
+        print("Find files include {} in name from  {}".format(map_code_number, source_dir))
+        all_glob_gml_files = list(Path(source_dir).rglob(str(map_code_number) + extension))
+    elif Path(source_dir).is_file():
+        all_glob_gml_files = [Path(args.source_dir)]
+
     target_part_names = ['bldg', 'brid', 'dem', 'tran']
     convert_target_to_cityjson_files = []
 
