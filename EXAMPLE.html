@@ -209,8 +209,10 @@ mv sample_resource/bim/warehouse.obj ~/CG2RM/obj/
 <img src="images/view_trans_warehouse_by_hand.jpg" width="80%"></p>
 <h3 id="obj-から点群生成">obj から点群生成</h3>
 <pre><code>python create_sampling_point_cloud.py -f $HOME/CG2RM/obj/53391597_bldg_6697.obj ./sample_resource/bim/warehouse_trans.obj --density 10  
+
 python create_sampling_point_cloud.py -f $HOME/CG2RM/obj/533915_dem_6697.obj  --density 0.1
 </code></pre><h3 id="citygmlとbimの位置合わせを行う">CityGMLとBIMの位置合わせを行う</h3>
+<p>()()</p>
 <pre><code>python align_bim.py --source ~/CG2RM/pointcloud/warehouse_trans_sample.ply --target ~/CG2RM/pointcloud/53391597_bldg_6697_sample.ply
 </code></pre><p><img src="images/align_result.jpg" width="80%">
 赤く表示されているモデルは初期位置。黄色く表示されているモデルはプログラムにより自動調整された後のモデル位置。</p>
@@ -221,8 +223,9 @@ python create_sampling_point_cloud.py -f $HOME/CG2RM/obj/533915_dem_6697.obj  --
 <p>特定の建築物を取り除いたObjの点群を生成</p>
 <pre><code>python create_sampling_point_cloud.py -f $HOME/CG2RM/obj/53391597_bldg_6697_removed.obj  --density 10
 </code></pre><h3 id="複数の点群をマージする">複数の点群をマージする</h3>
-<pre><code>python merge_multi_point_cloud.py -f ~/CG2RM/pointcloud/warehouse_trans_sample.pcd ~/CG2RM/pointcloud/53391597_bldg_6697_removed_sample.pcd
-</code></pre>
+<pre><code>python merge_multi_point_cloud.py -f ~/CG2RM/pointcloud/warehouse_trans_sample.pcd ~/CG2RM/pointcloud/53391597_bldg_6697_removed_sample.pcd ~/CG2RM/pointcloud/533915_dem_6697_sample.pcd
+</code></pre><p><img src="images/merged_points.jpg" width="80%">  </p>
+
                                 
                                 </section>
                             
@@ -261,7 +264,7 @@ python create_sampling_point_cloud.py -f $HOME/CG2RM/obj/533915_dem_6697.obj  --
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Example","level":"1.4","depth":1,"previous":{"title":"Usage","level":"1.3","depth":1,"path":"Usage.md","ref":"Usage.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"EXAMPLE.md","mtime":"2023-02-23T09:22:10.145Z","type":"markdown"},"gitbook":{"version":"4.0.4","time":"2023-02-23T09:22:19.399Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Example","level":"1.4","depth":1,"previous":{"title":"Usage","level":"1.3","depth":1,"path":"Usage.md","ref":"Usage.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"EXAMPLE.md","mtime":"2023-02-23T09:41:37.898Z","type":"markdown"},"gitbook":{"version":"4.0.4","time":"2023-02-23T09:41:48.866Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
