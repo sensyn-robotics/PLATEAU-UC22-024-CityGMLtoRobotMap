@@ -210,15 +210,21 @@ mv sample_resource/bim/warehouse.obj ~/CG2RM/obj/
 <p><img src="images/view_import_warehouse_nad_map.jpg" width="80%"></p>
 <p>対象の建築物を移動（移動方法はBlenderの<a href="https://docs.blender.org/manual/ja/2.93/scene_layout/object/editing/transform/move.html" target="_blank">操作方法参照</a>）</p>
 <p><img src="images/view_trans_warehouse_by_hand.jpg" width="80%"></p>
+<p>[File]&gt;[Export]&gt;[Wavefront(.obj)]  </p>
+<p><img src="images/output_setting.jpg" width="30%">  </p>
+<p>Up AxisをZにして　warehouse_trans.obj　という名前で保存。&quot;$HOME/CG2RM/obj&quot;に移動させる</p>
 <h3 id="obj-から点群生成">obj から点群生成</h3>
-<pre><code>python create_sampling_point_cloud.py -f $HOME/CG2RM/obj/53391597_bldg_6697.obj ./sample_resource/bim/warehouse_trans.obj --density 10  
+<pre><code>python create_sampling_point_cloud.py -f $HOME/CG2RM/obj/53391597_bldg_6697.obj $HOME/CG2RM/obj/warehouse_trans.obj --density 10  
+python create_sampling_point_cloud.py -f $HOME/CG2RM/obj/533915_dem_6697.obj  --density 0.1  
 
-python create_sampling_point_cloud.py -f $HOME/CG2RM/obj/533915_dem_6697.obj  --density 0.1
-</code></pre><h3 id="citygmlとbimの位置合わせを行う">CityGMLとBIMの位置合わせを行う</h3>
-<p>()()</p>
+# ./sample_resource/bim/warehouse_trans.obj は事前にblenderで位置調整したモデルです。
+python create_sampling_point_cloud.py -f ./sample_resource/bim/warehouse_trans.obj --density 10
+</code></pre><h3 id="プログラムによるcitygmlとbimの位置合わせを行う">プログラムによるCityGMLとBIMの位置合わせを行う</h3>
+<p>コマンドを実行することでCityGMLが持つ座標系に合うように位置調整したBIMが結果として得られます。<br>モデルの形状の違いなどの要因により自動調整には限界があります。うまく一致しない場合はBlenderなどのソフトを使って手動で調整する方が良い結果を得られる可能性があります。</p>
 <pre><code>python align_bim.py --source ~/CG2RM/pointcloud/warehouse_trans_sample.ply --target ~/CG2RM/pointcloud/53391597_bldg_6697_sample.ply
 </code></pre><p><img src="images/align_result.jpg" width="80%">
-赤く表示されているモデルは初期位置。黄色く表示されているモデルはプログラムにより自動調整された後のモデル位置。</p>
+赤く表示されているモデルは初期位置。黄色く表示されているモデルはプログラムにより自動調整された後のモデル位置。
+結果は~/CG2RM/transformed内に保存されます。</p>
 <h3 id="元の都市モデル　objから特定の建物を取り除く　">元の都市モデル　objから特定の建物を取り除く　</h3>
 <p>blender UI上で削除対象建築物を左クリックで選択  </p>
 <p><img src="images/chice_for_remove.jpg" width="80%">  </p>
@@ -229,8 +235,8 @@ python create_sampling_point_cloud.py -f $HOME/CG2RM/obj/533915_dem_6697.obj  --
 <img src="images/output_select.jpg" width="80%">  </p>
 <p>[File]&gt;[Export]&gt;[Wavefront(.obj)]  </p>
 <p><img src="images/output_setting.jpg" width="30%">  </p>
-<p>保存</p>
-<p>特定の建築物を取り除いたObjの点群を生成</p>
+<p>Up AxisをZにして　53391597_bldg_6697_removed.obj　という名前で&quot;$HOME/CG2RM/obj/&quot;に保存</p>
+<h3 id="特定の建築物を取り除いたobjの点群を生成">特定の建築物を取り除いたObjの点群を生成</h3>
 <pre><code>python create_sampling_point_cloud.py -f $HOME/CG2RM/obj/53391597_bldg_6697_removed.obj  --density 10
 </code></pre><h3 id="複数の点群をマージする">複数の点群をマージする</h3>
 <pre><code>python merge_multi_point_cloud.py -f ~/CG2RM/pointcloud/warehouse_trans_sample.pcd ~/CG2RM/pointcloud/53391597_bldg_6697_removed_sample.pcd ~/CG2RM/pointcloud/533915_dem_6697_sample.pcd
@@ -274,7 +280,7 @@ python create_sampling_point_cloud.py -f $HOME/CG2RM/obj/533915_dem_6697.obj  --
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Example","level":"1.4","depth":1,"previous":{"title":"Usage","level":"1.3","depth":1,"path":"Usage.md","ref":"Usage.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"EXAMPLE.md","mtime":"2023-02-23T09:55:32.271Z","type":"markdown"},"gitbook":{"version":"4.0.4","time":"2023-02-23T09:55:50.182Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Example","level":"1.4","depth":1,"previous":{"title":"Usage","level":"1.3","depth":1,"path":"Usage.md","ref":"Usage.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"EXAMPLE.md","mtime":"2023-02-23T10:18:37.913Z","type":"markdown"},"gitbook":{"version":"4.0.4","time":"2023-02-23T10:18:48.404Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
