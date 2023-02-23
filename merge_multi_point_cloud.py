@@ -10,7 +10,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument('-f', '--point_cloud_files', nargs='+', help='list of file path ', required=True)
-    parser.add_argument('-t', '--type', type=str, default='pcd', choices=['ply', 'pcd'])
+    parser.add_argument('-n','--name', type=str, default='marge_points')
     parser.add_argument('--save_dir', type=str, default=str(Path.home().joinpath('CG2RM', 'pointcloud')))
     args = parser.parse_args()
     input_files = [Path(file_str) for file_str in args.point_cloud_files]
@@ -40,5 +40,7 @@ if __name__ == '__main__':
 
     save_directory = Path(args.save_dir)
     save_directory.mkdir(exist_ok=True, parents=True)
-    f_name = 'marge_points'
-    o3d.io.write_point_cloud(str(save_directory.joinpath(f_name + '.' + args.type)), pcd)
+
+    f_name = args.name
+    o3d.io.write_point_cloud(str(save_directory.joinpath(f_name + '.' + "pcd")), pcd)
+    o3d.io.write_point_cloud(str(save_directory.joinpath(f_name + '.' + "ply")), pcd)
