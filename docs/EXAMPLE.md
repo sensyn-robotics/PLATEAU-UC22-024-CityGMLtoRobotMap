@@ -46,19 +46,31 @@ Up Axis をZにする
 
 <img src="images/view_trans_warehouse_by_hand.jpg" width="80%">
 
+[File]>[Export]>[Wavefront(.obj)]  
+
+<img src="images/output_setting.jpg" width="30%">  
+
+Up AxisをZにして　warehouse_trans.obj　という名前で保存。"$HOME/CG2RM/obj"に移動させる
+
 ### obj から点群生成
 ```
-python create_sampling_point_cloud.py -f $HOME/CG2RM/obj/53391597_bldg_6697.obj ./sample_resource/bim/warehouse_trans.obj --density 10  
-
+python create_sampling_point_cloud.py -f $HOME/CG2RM/obj/53391597_bldg_6697.obj $HOME/CG2RM/obj/warehouse_trans.obj --density 10  
 python create_sampling_point_cloud.py -f $HOME/CG2RM/obj/533915_dem_6697.obj  --density 0.1  
+
+# ./sample_resource/bim/warehouse_trans.obj は事前にblenderで位置調整したモデルです。
+python create_sampling_point_cloud.py -f ./sample_resource/bim/warehouse_trans.obj --density 10  
+
 ```
-### CityGMLとBIMの位置合わせを行う 
-()()
+
+### プログラムによるCityGMLとBIMの位置合わせを行う 
+コマンドを実行することでCityGMLが持つ座標系に合うように位置調整したBIMが結果として得られます。  
+モデルの形状の違いなどの要因により自動調整には限界があります。うまく一致しない場合はBlenderなどのソフトを使って手動で調整する方が良い結果を得られる可能性があります。
 ```
 python align_bim.py --source ~/CG2RM/pointcloud/warehouse_trans_sample.ply --target ~/CG2RM/pointcloud/53391597_bldg_6697_sample.ply  
 ```
 <img src="images/align_result.jpg" width="80%">
 赤く表示されているモデルは初期位置。黄色く表示されているモデルはプログラムにより自動調整された後のモデル位置。
+結果は~/CG2RM/transformed内に保存されます。
 
 ### 元の都市モデル　objから特定の建物を取り除く　
 
@@ -78,9 +90,9 @@ blender UI上で削除対象建築物を左クリックで選択
 
 <img src="images/output_setting.jpg" width="30%">  
 
-保存
+Up AxisをZにして　53391597_bldg_6697_removed.obj　という名前で"$HOME/CG2RM/obj/"に保存
 
-特定の建築物を取り除いたObjの点群を生成
+### 特定の建築物を取り除いたObjの点群を生成
 ```
 python create_sampling_point_cloud.py -f $HOME/CG2RM/obj/53391597_bldg_6697_removed.obj  --density 10
 ```
