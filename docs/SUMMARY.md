@@ -5,3 +5,5 @@
 * [Install](Install.md)
 
 * [Usage](Usage.md)
+
+* [Example](EXAMPLE.md)

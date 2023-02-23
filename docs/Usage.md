@@ -80,12 +80,36 @@ optional arguments:
 ```
 python3 align_bim.py
 ```
+
+```
+usage: align_bim.py [-h] --source SOURCE --target TARGET [--save_dir SAVE_DIR] [--offset [OFFSET [OFFSET ...]]]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --source SOURCE
+  --target TARGET
+  --save_dir SAVE_DIR
+  --offset [OFFSET [OFFSET ...]]
+                        a list of float variables
+
+```
 コマンドを実行することでCityGMLが持つ座標系に合うようにBIMを位置調整した結果が得られます。
 
 ### 5.複数の点群を一つの点群にまとめる
 
 複数の点群ファイルを一つに統一する場合、以下のようにコマンドを実行することで統合することが可能です。
 ````
-python3 create_sampling_point_cloud.py -f file_1.pcd file_2.pcd ...
+python3 merge_multi_point_cloud.py -f file_1.pcd file_2.pcd ...
 ````
 
+```
+usage: merge_multi_point_cloud.py [-h] -f POINT_CLOUD_FILES [POINT_CLOUD_FILES ...] [-t {ply,pcd}] [--save_dir SAVE_DIR]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -f POINT_CLOUD_FILES [POINT_CLOUD_FILES ...], --point_cloud_files POINT_CLOUD_FILES [POINT_CLOUD_FILES ...]
+                        list of file path
+  -t {ply,pcd}, --type {ply,pcd}
+  --save_dir SAVE_DIR
+
+```
