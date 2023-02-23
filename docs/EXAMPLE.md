@@ -20,16 +20,23 @@ python gml2obj.py -s ./sample_resource/city_gml/udx/ --lat 35.4987030455 --lon 1
 python gml2obj.py -s ./sample_resource/city_gml/udx/dem/533915_dem_6697.gml --lat 35.4987030455 --lon 139.72337047 --alt 38.5293235779
 ```
 
+
+### 都市モデル obj から点群生成
+```
+python create_sampling_point_cloud.py -f $HOME/CG2RM/obj/53391597_bldg_6697.obj  --density 10  
+python create_sampling_point_cloud.py -f $HOME/CG2RM/obj/533915_dem_6697.obj  --density 1 -x 250 -y 250 
+
+```
+
 ### BIM(ifc)をobjに変換 
 ```
-./IfcConvert sample_resource/bim/warehouse.ifc sample_resource/bim/warehouse.obj
-
-mv sample_resource/bim/warehouse.obj ~/CG2RM/obj/
+./IfcConvert sample_resource/bim/warehouse.ifc ~/CG2RM/obj/warehouse.obj
 ```
 
 
-### blender を使ってある程度位置合わせ
+### （CityGMLとBIMの位置合わせを行う　パターン１）, blender を使ってある程度位置合わせた後、プログラムによるCityGMLとBIMの位置合わせを行う
 
+#### blender を使ってある程度位置合わせを行う
 [File]>[Import]>[Wavefront(.obj)]
 
 <img src="images/import_columun.jpg" width="80%">
@@ -52,25 +59,27 @@ Up Axis をZにする
 
 Up AxisをZにして　warehouse_trans.obj　という名前で保存。"$HOME/CG2RM/obj"に移動させる
 
-### obj から点群生成
-```
-python create_sampling_point_cloud.py -f $HOME/CG2RM/obj/53391597_bldg_6697.obj $HOME/CG2RM/obj/warehouse_trans.obj --density 10  
-python create_sampling_point_cloud.py -f $HOME/CG2RM/obj/533915_dem_6697.obj  --density 0.1  
+#### プログラムによる位置合わせを行う 
 
+コマンドを実行することでCityGMLが持つ座標系に合うように位置調整したBIMが結果として得られます。  
+モデルの形状の違いなどの要因により自動調整には限界があります。うまく一致しない場合はBlenderなどのソフトを使って手動で調整する方が良い結果を得られる可能性があります。
+
+```
+python create_sampling_point_cloud.py -f $HOME/CG2RM/obj/warehouse_trans.obj --density 10  
+python align_bim.py --source ~/CG2RM/pointcloud/warehouse_trans_sample.ply --target ~/CG2RM/pointcloud/53391597_bldg_6697_sample.ply  
+```
+
+<img src="images/align_result.jpg" width="80%">
+赤く表示されているモデルは初期位置。黄色く表示されているモデルはプログラムにより自動調整された後のモデル位置。
+位置変換後の結果obj,ply,pcdは"~/CG2RM/transformed"内に保存されます。
+
+### （CityGMLとBIMの位置合わせを行う　パターン２）Blenderのみで位置調整したモデルを使う
+事前にBlenderを使って手動で位置合わせしたモデルを使います
+```
 # ./sample_resource/bim/warehouse_trans.obj は事前にblenderで位置調整したモデルです。
 python create_sampling_point_cloud.py -f ./sample_resource/bim/warehouse_trans.obj --density 10  
 
 ```
-
-### プログラムによるCityGMLとBIMの位置合わせを行う 
-コマンドを実行することでCityGMLが持つ座標系に合うように位置調整したBIMが結果として得られます。  
-モデルの形状の違いなどの要因により自動調整には限界があります。うまく一致しない場合はBlenderなどのソフトを使って手動で調整する方が良い結果を得られる可能性があります。
-```
-python align_bim.py --source ~/CG2RM/pointcloud/warehouse_trans_sample.ply --target ~/CG2RM/pointcloud/53391597_bldg_6697_sample.ply  
-```
-<img src="images/align_result.jpg" width="80%">
-赤く表示されているモデルは初期位置。黄色く表示されているモデルはプログラムにより自動調整された後のモデル位置。
-結果は~/CG2RM/transformed内に保存されます。
 
 ### 元の都市モデル　objから特定の建物を取り除く　
 

@@ -71,8 +71,8 @@ optional arguments:
   -f POINT_CLOUD_FILES 変換対象のobjファイルのパス。同時に複数指定できます。
   --save_dir SAVE_DIR
   -d DENSITY, --density DENSITY　面積あたりにサンプリングする点群の数
-  -x X                  box cut x length
-  -y Y                  box cut y length
+  -x X                  対象メッシュの範囲を制限する　x[m]　デフォルトでは動作しない
+  -y Y                  対象メッシュの範囲を制限する　y[m]　デフォルトでは動作しない
 
 ```
 
