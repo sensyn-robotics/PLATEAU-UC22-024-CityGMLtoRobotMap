@@ -12,13 +12,15 @@ point_set = pymeshlab.MeshSet()
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('-f', '--point_cloud_files', nargs='+', help='list of file path ', required=True)
+    parser.add_argument('-f', '--obj_files', nargs='+', help='list of file path ', required=True)
     parser.add_argument('--save_dir', type=str, default=str(Path.home().joinpath('CG2RM', 'pointcloud')))
     parser.add_argument('-d', '--density', type=float, default=30)
+    parser.add_argument('-x',  type=float, default=None, help='box cut x length')
+    parser.add_argument('-y',  type=float, default=None, help='box cut y length')
 
     args = parser.parse_args()
 
-    input_files = [Path(file_str) for file_str in args.point_cloud_files]
+    input_files = [Path(file_str) for file_str in args.obj_files]
     save_directory = Path(args.save_dir)
 
     save_directory.mkdir(exist_ok=True, parents=True)
@@ -29,7 +31,12 @@ if __name__ == '__main__':
         if isinstance(mesh, trimesh.Scene):
             mesh = trimesh.util.concatenate([trimesh.Trimesh(vertices=m.vertices, faces=m.faces) for m in mesh.geometry.values()])
 
-        print('load', str(input_obj_file))
+        print('load', str(input_obj_file), 'bbox size', mesh.bounds)
+
+        if args.x is not None and args.y is not None:
+
+            box = trimesh.creation.box(extents=[args.x * 2, args.y * 2, 1000])
+            mesh = mesh.slice_plane(box.facets_origin, -box.facets_normal)
 
         full_area_size = int(mesh.area)
         density = args.density
@@ -51,6 +58,13 @@ if __name__ == '__main__':
             if sample_number == 1:
                 print('Component', i, '/', components_len, ' skip sampling {} points ....'.format(sample_number))
                 continue
+
+            # if sample_number > 100000:
+            #     spacing = 10
+            #     voxel = component.voxelized(pitch=spacing)
+            #     slices = trimesh.intersections.slice_mesh_plane(voxel,plane_origin=[0,0,0,],plane_normal = [1,0,0])
+            #
+            # box = trimesh.creation.box(extents=[1.5, 1.5, 1.5])
 
             v = component.vertices
             f = component.faces
