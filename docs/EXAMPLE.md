@@ -1,4 +1,4 @@
-### サンプルデータを使ったGityGMltoRobotoMapの使用方法を解説します。
+### サンプルデータを使ったCityGMLtoRobotMapの使用方法を解説します。
 
 1. CityGMLをobjに変換
 2. CityGML生成したobjを点群化
