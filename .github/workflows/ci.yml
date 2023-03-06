@@ -4,28 +4,49 @@ on:
   push:
     branches:
       - main
+      - documentation
+
+#jobs:
+#  deploy:
+#    runs-on: ubuntu-latest
+#    steps:
+#    - name: Checkout
+#      uses: actions/checkout@v3
+#
+#    - name: Setup Node
+#      uses: actions/setup-node@v2
+#      with:
+#        node-version: '16.x'
+#
+#    - name: Install honkit
+#      run: npm install honkit --save-dev
+#
+#    - name: build HTML
+#      run: npx honkit build ./docs
+#
+#    - name: Push to gh-pages
+#      uses: peaceiris/actions-gh-pages@v3
+#      with:
+#        github_token: ${{ secrets.GITHUB_TOKEN }}
+#        publish_branch: gh-pages
+#        publish_dir: ./docs/_book
 
 jobs:
-  deploy:
+  publish-docs:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
+    - name: Chekout
       uses: actions/checkout@v3
-
-    - name: Setup Node
-      uses: actions/setup-node@v2
+    - name: Dotnet Setup
+      uses: actions/setup-dotnet@v3
       with:
-        node-version: '16.x'
+        dotnet-version: 7.x
 
-    - name: Install honkit
-      run: npm install honkit --save-dev
+    - run: dotnet tool update -g docfx
+    - run: docfx docfx_project/docfx.json
 
-    - name: build HTML
-      run: npx honkit build ./docs
-
-    - name: Push to gh-pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
+    - name: Deploy
+    uses: peaceiris/actions-gh-pages@v3
+    with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_branch: gh-pages
-        publish_dir: ./docs/_book
+        publish_dir: docs/_site
