@@ -107,15 +107,15 @@ python create_sampling_point_cloud.py -f $HOME/CG2RM/obj/533915_dem_6697.obj  --
 <h4 id="blender-を使ってある程度位置合わせた後プログラムによるcitygmlとbimの位置合わせを行う">blender を使ってある程度位置合わせた後、プログラムによるCityGMLとBIMの位置合わせを行う</h4>
 <h4 id="blender-を使ってある程度位置合わせを行う">blender を使ってある程度位置合わせを行う</h4>
 <p>[File]&gt;[Import]&gt;[Wavefront(.obj)]</p>
-<img src="images/import_columun.jpg" width="80%">
+<img src="resource/EXAMPLE/import_columun.jpg" width="80%">
 <p>Up Axis をZにする</p>
-<img src="images/import_axis.jpg" width="30%">
+<img src="resource/EXAMPLE//import_axis.jpg" width="30%">
 <p>対象の建築物を選択</p>
-<img src="images/view_import_warehouse_nad_map.jpg" width="80%">
+<img src="resource/EXAMPLE//view_import_warehouse_nad_map.jpg" width="80%">
 <p>対象の建築物を移動（移動方法はBlenderの<a href="https://docs.blender.org/manual/ja/2.93/scene_layout/object/editing/transform/move.html">操作方法参照</a>）</p>
-<img src="images/view_trans_warehouse_by_hand.jpg" width="80%">
+<img src="resource/EXAMPLE//view_trans_warehouse_by_hand.jpg" width="80%">
 <p>[File]&gt;[Export]&gt;[Wavefront(.obj)]</p>
-<img src="images/output_setting.jpg" width="30%">  
+<img src="resource/EXAMPLE//output_setting.jpg" width="30%">  
 <p>Up AxisをZにして　warehouse_trans.obj　という名前で保存。&quot;$HOME/CG2RM/obj&quot;に移動させる</p>
 <h4 id="プログラムによる位置合わせを行う">プログラムによる位置合わせを行う</h4>
 <p>コマンドを実行することでCityGMLが持つ座標系に合うように位置調整したBIMが結果として得られます。<br>
@@ -123,7 +123,7 @@ python create_sampling_point_cloud.py -f $HOME/CG2RM/obj/533915_dem_6697.obj  --
 <pre><code>python create_sampling_point_cloud.py -f $HOME/CG2RM/obj/warehouse_trans.obj --density 10  
 python align_bim.py --source ~/CG2RM/pointcloud/warehouse_trans_sample.ply --target ~/CG2RM/pointcloud/53391597_bldg_6697_sample.ply  
 </code></pre>
-<img src="images/align_result.jpg" width="80%">
+<img src="resource/EXAMPLE//align_result.jpg" width="80%">
 赤く表示されているモデルは初期位置。黄色く表示されているモデルはプログラムにより自動調整された後のモデル位置。
 位置変換後の結果obj,ply,pcdは"~/CG2RM/transformed"内に保存されます。
 <h3 id="4-citygmlとbimの位置合わせを行うパターン２">4. CityGMLとBIMの位置合わせを行う　(パターン２)</h3>
@@ -135,13 +135,13 @@ python create_sampling_point_cloud.py -f ./sample_resource/bim/warehouse_trans.o
 </code></pre>
 <h3 id="5-citygml生成したobjから特定の建物を取り除く">5. CityGML生成したobjから特定の建物を取り除く</h3>
 <p>blender UI上で削除対象建築物を左クリックで選択</p>
-<img src="images/chice_for_remove.jpg" width="80%">  
+<img src="resource/EXAMPLE//chice_for_remove.jpg" width="80%">  
 <p>[delete]keyで削除</p>
-<img src="images/remove_result.jpg" width="80%">  
+<img src="resource/EXAMPLE//remove_result.jpg" width="80%">  
 <p>[A]を押すと残りのオブジェクト全選択
-<img src="images/output_select.jpg" width="80%"></p>
+<img src="resource/EXAMPLE//output_select.jpg" width="80%"></p>
 <p>[File]&gt;[Export]&gt;[Wavefront(.obj)]</p>
-<img src="images/output_setting.jpg" width="30%">  
+<img src="resource/EXAMPLE//output_setting.jpg" width="30%">  
 <p>Up AxisをZにして　53391597_bldg_6697_removed.obj　という名前で&quot;$HOME/CG2RM/obj/&quot;に保存</p>
 <h4 id="特定の建築物を取り除いたobjの点群を生成">特定の建築物を取り除いたObjの点群を生成</h4>
 <pre><code>python create_sampling_point_cloud.py -f $HOME/CG2RM/obj/53391597_bldg_6697_removed.obj  --density 10
@@ -149,7 +149,7 @@ python create_sampling_point_cloud.py -f ./sample_resource/bim/warehouse_trans.o
 <h3 id="6-複数の点群をマージする">6. 複数の点群をマージする</h3>
 <pre><code>python merge_multi_point_cloud.py -f ~/CG2RM/pointcloud/warehouse_trans_sample.pcd ~/CG2RM/pointcloud/53391597_bldg_6697_removed_sample.pcd ~/CG2RM/pointcloud/533915_dem_6697_sample.pcd
 </code></pre>
-<img src="images/merged_points.jpg" width="80%">  
+<img src="resource/EXAMPLE//merged_points.jpg" width="80%">  
 </article>
           </div>
 

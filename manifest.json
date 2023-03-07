@@ -12,15 +12,12 @@
       }
     },
     {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
       "type": "Conceptual",
       "source_relative_path": "index.md",
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "fXRrH+JdymzV2EUdVRPph2hRMM7qGk+Ui1MAwvZ2aCE="
+          "hash": "hw/0h6fJzH3MIdKMvRqU3+uqe6+TvzlGDaR4pXOeV0U="
         }
       },
       "version": ""
@@ -34,7 +31,7 @@
       "output": {
         ".html": {
           "relative_path": "manual/EXAMPLE.html",
-          "hash": "rH/DzY15KT8nWWzVJjegY+Ems/DueEoVONs0a85Y8ww="
+          "hash": "qGrQuh6Frmf0+eYhjcEUOPX9QLtKqjqomjTmtz32jRo="
         }
       },
       "version": ""
@@ -90,6 +87,106 @@
         ".html": {
           "relative_path": "manual/toc.html",
           "hash": "VhTEtmjUcWK0cJ5S0dq8nYIEouA9LJRLngDnmGDcYuw="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "resources/EXAMPLE/align_result.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "resources/EXAMPLE/align_result.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "resources/EXAMPLE/chice_for_remove.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "resources/EXAMPLE/chice_for_remove.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "resources/EXAMPLE/import_axis.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "resources/EXAMPLE/import_axis.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "resources/EXAMPLE/import_columun.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "resources/EXAMPLE/import_columun.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "resources/EXAMPLE/merged_points.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "resources/EXAMPLE/merged_points.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "resources/EXAMPLE/output_select.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "resources/EXAMPLE/output_select.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "resources/EXAMPLE/output_setting.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "resources/EXAMPLE/output_setting.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "resources/EXAMPLE/remove_result.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "resources/EXAMPLE/remove_result.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "resources/EXAMPLE/view_import_warehouse_nad_map.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "resources/EXAMPLE/view_import_warehouse_nad_map.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "resources/EXAMPLE/view_trans_warehouse_by_hand.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "resources/EXAMPLE/view_trans_warehouse_by_hand.jpg"
         }
       },
       "version": ""

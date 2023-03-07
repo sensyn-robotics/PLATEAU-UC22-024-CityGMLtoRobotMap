@@ -1,8 +1,8 @@
 {
   "index.html": {
     "href": "index.html",
-    "title": "PLATEAU SDK for Unreal | PLATEAU CityGMLtoRobotMap",
-    "keywords": "PLATEAU SDK for Unreal このパッケージには、PLATEAUの3D都市モデルデータを利用するためのAPI、サンプルが含まれます。PLATEAU SDK for Unrealを利用することで、実世界を舞台にしたアプリケーションの開発や、PLATEAUの豊富なデータを活用したシミュレーションを簡単に行うことができます。"
+    "title": "CityGMLtoRobotMap | PLATEAU CityGMLtoRobotMap",
+    "keywords": "CityGMLtoRobotMap 「CityGMLtoRobotMap」はCityGMLをRobotが自己位置推定などで使用できる環境地図として変換するためのツール群です。CityGMLからOBJ形式への形式変換・座標変換の機能、OBJファイルの表面をサンプリングして点群を生成できる機能、BIMとCityGMLのマージ機能があります。"
   },
   "manual/EXAMPLE.html": {
     "href": "manual/EXAMPLE.html",
