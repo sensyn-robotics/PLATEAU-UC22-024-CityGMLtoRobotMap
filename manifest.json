@@ -1,0 +1,115 @@
+{
+  "homepages": [],
+  "source_base_path": "/home/runner/work/PLATEAU-UC22-024-CityGMLtoRobotMap/PLATEAU-UC22-024-CityGMLtoRobotMap/Documentation",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "fXRrH+JdymzV2EUdVRPph2hRMM7qGk+Ui1MAwvZ2aCE="
+        }
+      },
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "manual/EXAMPLE.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/EXAMPLE.html",
+          "hash": "rH/DzY15KT8nWWzVJjegY+Ems/DueEoVONs0a85Y8ww="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "manual/Install.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/Install.html",
+          "hash": "NUApD4bjdWEgwM4/BMZwwhfaoKC10WCMKRHxAwywItg="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "manual/README.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/README.html",
+          "hash": "MuUHU16NNs2scSiea9Ydgo+f8ZTdcOdjooKVUsr4PFM="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "manual/SUMMARY.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/SUMMARY.html",
+          "hash": "SA80rCtr/g2HH8ml77XPGeM+uwDqW2h6pqqBMXEHRRY="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "manual/Usage.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/Usage.html",
+          "hash": "CLNUPOsUGbhlw0gYfJwx6WbtGDOL9MlDRjJDOsZxFrY="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "manual/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "manual/toc.html",
+          "hash": "VhTEtmjUcWK0cJ5S0dq8nYIEouA9LJRLngDnmGDcYuw="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "torbzyZYAO9c5e0wKnkgsb/bXMuHNFHzJjanHG7O0nM="
+        }
+      },
+      "version": ""
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
