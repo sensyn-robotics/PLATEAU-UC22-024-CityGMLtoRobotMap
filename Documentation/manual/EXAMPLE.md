@@ -41,23 +41,23 @@ python create_sampling_point_cloud.py -f $HOME/CG2RM/obj/533915_dem_6697.obj  --
 #### blender を使ってある程度位置合わせを行う
 [File]>[Import]>[Wavefront(.obj)]
 
-<img src="images/import_columun.jpg" width="80%">
+<img src="../resources/EXAMPLE/import_columun.jpg" width="80%">
 
 Up Axis をZにする
 
-<img src="images/import_axis.jpg" width="30%">
+<img src="../resources/EXAMPLE//import_axis.jpg" width="30%">
 
 対象の建築物を選択
 
-<img src="images/view_import_warehouse_nad_map.jpg" width="80%">
+<img src="../resources/EXAMPLE//view_import_warehouse_nad_map.jpg" width="80%">
 
 対象の建築物を移動（移動方法はBlenderの[操作方法参照](https://docs.blender.org/manual/ja/2.93/scene_layout/object/editing/transform/move.html)）
 
-<img src="images/view_trans_warehouse_by_hand.jpg" width="80%">
+<img src="../resources/EXAMPLE//view_trans_warehouse_by_hand.jpg" width="80%">
 
 [File]>[Export]>[Wavefront(.obj)]  
 
-<img src="images/output_setting.jpg" width="30%">  
+<img src="../resources/EXAMPLE//output_setting.jpg" width="30%">  
 
 Up AxisをZにして　warehouse_trans.obj　という名前で保存。"$HOME/CG2RM/obj"に移動させる
 
@@ -71,7 +71,7 @@ python create_sampling_point_cloud.py -f $HOME/CG2RM/obj/warehouse_trans.obj --d
 python align_bim.py --source ~/CG2RM/pointcloud/warehouse_trans_sample.ply --target ~/CG2RM/pointcloud/53391597_bldg_6697_sample.ply  
 ```
 
-<img src="images/align_result.jpg" width="80%">
+<img src="../resources/EXAMPLE//align_result.jpg" width="80%">
 赤く表示されているモデルは初期位置。黄色く表示されているモデルはプログラムにより自動調整された後のモデル位置。
 位置変換後の結果obj,ply,pcdは"~/CG2RM/transformed"内に保存されます。
 
@@ -88,19 +88,19 @@ python create_sampling_point_cloud.py -f ./sample_resource/bim/warehouse_trans.o
 
 blender UI上で削除対象建築物を左クリックで選択  
 
-<img src="images/chice_for_remove.jpg" width="80%">  
+<img src="../resources/EXAMPLE//chice_for_remove.jpg" width="80%">  
 
 [delete]keyで削除  
 
-<img src="images/remove_result.jpg" width="80%">  
+<img src="../resources/EXAMPLE//remove_result.jpg" width="80%">  
 
 [A]を押すと残りのオブジェクト全選択
 　　
-<img src="images/output_select.jpg" width="80%">  
+<img src="../resources/EXAMPLE//output_select.jpg" width="80%">  
 
 [File]>[Export]>[Wavefront(.obj)]  
 
-<img src="images/output_setting.jpg" width="30%">  
+<img src="../resources/EXAMPLE//output_setting.jpg" width="30%">  
 
 Up AxisをZにして　53391597_bldg_6697_removed.obj　という名前で"$HOME/CG2RM/obj/"に保存
 
@@ -114,5 +114,5 @@ python create_sampling_point_cloud.py -f $HOME/CG2RM/obj/53391597_bldg_6697_remo
 python merge_multi_point_cloud.py -f ~/CG2RM/pointcloud/warehouse_trans_sample.pcd ~/CG2RM/pointcloud/53391597_bldg_6697_removed_sample.pcd ~/CG2RM/pointcloud/533915_dem_6697_sample.pcd
 ```
 
-<img src="images/merged_points.jpg" width="80%">  
+<img src="../resources/EXAMPLE//merged_points.jpg" width="80%">  
 

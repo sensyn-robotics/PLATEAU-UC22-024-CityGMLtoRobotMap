@@ -19,10 +19,13 @@
 
 ## 3．利用手順
 ### インストール方法
-[Install](https://sensyn-robotics.github.io/PLATEAU-UC22-024-CityGMLtoRobotMap/Install.html)を参照してください。
+[Install](https://sensyn-robotics.github.io/PLATEAU-UC22-024-CityGMLtoRobotMap/manual/Install.html)を参照してください。
 
-### 使い方
-[Usage](https://sensyn-robotics.github.io/PLATEAU-UC22-024-CityGMLtoRobotMap/Usage.html)を参照してください。
+### ツール使用例
+[Example ](https://sensyn-robotics.github.io/PLATEAU-UC22-024-CityGMLtoRobotMap/manual/EXAMPLE.html)を参照してください。
+
+### 各ツールの使い方
+[Usage](https://sensyn-robotics.github.io/PLATEAU-UC22-024-CityGMLtoRobotMap/manual/Usage.html)を参照してください。
 
 ## ライセンス
 * ソースコードおよび関連ドキュメントの著作権は国土交通省に帰属します。
