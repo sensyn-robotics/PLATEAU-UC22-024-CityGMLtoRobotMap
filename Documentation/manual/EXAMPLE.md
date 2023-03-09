@@ -1,6 +1,7 @@
-# サンプルデータを使ったCityGMLtoRobotMapの使用方法
+# サンプルデータを使った使用例・手順
 
-### 手順
+### 手順概要
+
 1. CityGMLをobjに変換
 2. CityGML生成したobjを点群化
 3. BIM(ifc)をobjに変換 

@@ -1,15 +1,14 @@
-# Install
+# 環境構築・インストール
 
-### 環境構築
-動作環境: Ubuntu18,python3.8
+必要動作環境: Ubuntu18, Python3.8
 
 ### 1. 依存ライブラリのインストール
 ```
 sudo apt install -y build-essential  libffi-dev libssl-dev zlib1g-dev liblzma-dev libbz2-dev libreadline-dev libsqlite3-dev libncurses5-dev libncursesw5-dev tk-dev  
 sudo apt install -y curl wget  git default-jre
 ```
-### 2.  pyenv と python 3.8 のインストール
-python 3.8環境を導入するためにここではpyenvを紹介しますが、他の方法でも問題ありません。
+### 2.  pyenv と Python3.8 のインストール
+Python3.8環境を導入するためにここではpyenvを紹介しますが、他の方法でも問題ありません。
 
 pyenvをダウンロード
 ````
@@ -24,7 +23,7 @@ echo 'eval "$(pyenv init -)"' >> ~/.bashrc
 source ~/.bashrc
 ````
 
-特定バージョンの　python　をインストールし、アクティベートする
+特定バージョンのPythonをインストールし、アクティベートする
 ````
 pyenv install 3.8.13
 ````
@@ -40,30 +39,31 @@ pip install --upgrade pip
 ````
 
 ### 3.  CityGMLtoRobotMap　のインストール 
-Clone CityGMLtoRobotMap
+ CityGMLtoRobotMapをクローンします
 ````
 git clone https://github.com/sensyn-robotics/PLATEAU-UC22-024-CityGMLtoRobotMap CityGMLtoRobotMap
 cd ./CityGMLtoRobotMap
 ````
 
-ダウンロード [citygml-tools](https://github.com/citygml4j/citygml-tools)
+ [citygml-tools](https://github.com/citygml4j/citygml-tools)をダウンロードします
 ````
 wget --content-disposition https://github.com/citygml4j/citygml-tools/releases/download/v2.0.0/citygml-tools-2.0.0.zip
 unzip citygml-tools-2.0.0.zip
 ````
 
-ダウンロード [IfcConverter](https://blenderbim.org/docs-python/ifcconvert/installation.html) （BIMを使う場合）
+[IfcConverter](https://blenderbim.org/docs-python/ifcconvert/installation.html)をダウンロードします （BIMを使う場合）
+（ubuntu18で動作確認できたバージョンを記載しています）
 ````
-# operation checked on only ubuntu18 
 wget --content-disposition https://s3.amazonaws.com/ifcopenshell-builds/IfcConvert-v0.6.0-0087fa8-linux64.zip
 unzip IfcConvert-*-linux64.zip
 ````
 
-CityGMLtoRobotMap が必要とする　python 依存ライブラリのインストール
+CityGMLtoRobotMap が必要とする　Python依存ライブラリをpoetryを用いてインストールします
 ````
 pip install poetry
 poetry install
-# swich into poetry environment
+
+# poetry環境へ切り替えます 
 poetry shell
 ````
    

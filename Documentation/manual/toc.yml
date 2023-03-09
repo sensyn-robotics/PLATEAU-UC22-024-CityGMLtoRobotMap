@@ -2,9 +2,9 @@
   href: ../index.md
 - name: 利用を開始する
   items:
-  - name: インストール
+  - name: 環境構築・インストール
     href: Install.md
-  - name: サンプルデータを使った使用例
+  - name: サンプルデータを使った使用例・手順
     href: EXAMPLE.md
   - name: 各コマンドの使い方
     href: Usage.md
