@@ -1,3 +1,14 @@
+
+## 各ツール使用方法・手順
+1. CityGMLをobjに変換する機能
+2. obj から点群を生成する機能
+3. BIM(ifc)をobjに変換する機能 
+4. CityGMLとBIMの位置合わせを行う機能   
+5. 複数の点群を一つの点群にまとめる機能
+
+(注意：poetryにより構築したpython環境を使うためには`poetry shell`を実行しpoetry環境をactivateする必要があります。)
+
+
 ## 準備
 CityGML形式のデータが必要です。
 
@@ -6,15 +17,6 @@ CityGML形式のデータが必要です。
 
 
 また、東京都以外の都市データも公開されています。[3D都市モデル（Project PLATEAU）ポータルサイト](https://www.geospatial.jp/ckan/dataset/plateau)
-
-# 各ツール使用方法・手順
-1. CityGMLをobjに変換する機能
-2. obj から点群を生成する機能
-3. BIM(ifc)をobjに変換する機能 
-4. CityGMLとBIMの位置合わせを行う機能   
-5. 複数の点群を一つの点群にまとめる機能
-
-(注意：poetryにより構築したpython環境を使うためには`poetry shell`を実行しpoetry環境をactivateする必要があります。)
 
 ## 1.CityGMLをobjに変換
 
