@@ -19,11 +19,11 @@
 
 ## 3．利用手順
 
-[インストール方法・使い方はこちら](https://sensyn-robotics.github.io/PLATEAU-UC22-024-CityGMLtoRobotMap/index.html)を参照してください。
+インストール方法・使い方は[こちら](https://sensyn-robotics.github.io/PLATEAU-UC22-024-CityGMLtoRobotMap/index.html)を参照してください。
 
 ## ライセンス
 * ソースコードおよび関連ドキュメントの著作権は国土交通省に帰属します。
-* 本ドキュメントは[Project PLATEAUのサイトポリシー](https://www.mlit.go.jp/plateau/sitepolicy/)（CCBY4.0および政府標準利用規約2.0）に従い提供されています。
+* 本ドキュメントは[Project PLATEAUのサイトポリシー](https://www.mlit.go.jp/plateau/site-policy/)（CCBY4.0および政府標準利用規約2.0）に従い提供されています。
 
 ## 注意事項
 * 本レポジトリは参考資料として提供しているものです。動作保証は行っておりません。
@@ -33,9 +33,9 @@
 ## 参考資料
 * 3D都市モデルとBIMを活用したモビリティ自律運行システム技術検証レポート: https://www.mlit.go.jp/plateau/libraries/technical-reports/
 * PLATEAU Webサイト Use caseページ「3D都市モデルとBIMを活用したモビリティ自律運行システム」: https://www.mlit.go.jp/plateau/use-case/uc22-024/
-* （利用しているライブラリなどへのリンク）
-  * [cjio](https://github.com/cityjson/cjio)
-  * [pyproj](https://github.com/pyproj4/pyproj)
-  * [trimesh](https://github.com/mikedh/trimesh)
-  * [open3d](https://github.com/isl-org/Open3D)
-  * [PyMeshLab](https://github.com/cnr-isti-vclab/PyMeshLab)
+* 利用しているライブラリなどへのリンク
+  * [cjio](https://github.com/cityjson/cjio) : city jsonを扱うライブラリ
+  * [pyproj](https://github.com/pyproj4/pyproj) : 緯度経度、座標変換を扱うライブラリ
+  * [trimesh](https://github.com/mikedh/trimesh) : メッシュを扱うライブラリ
+  * [open3d](https://github.com/isl-org/Open3D) : 点群、メッシュなどを扱うライブラリ
+  * [PyMeshLab](https://github.com/cnr-isti-vclab/PyMeshLab) : MeshLab機能のpythonラッパー

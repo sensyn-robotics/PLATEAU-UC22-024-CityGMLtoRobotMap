@@ -1,5 +1,5 @@
 
-## 各ツール使用方法・手順
+# 各ツール使用方法・手順
 1. CityGMLをobjに変換する機能
 2. obj から点群を生成する機能
 3. BIM(ifc)をobjに変換する機能 
@@ -9,7 +9,7 @@
 (注意：poetryにより構築したpython環境を使うためには`poetry shell`を実行しpoetry環境をactivateする必要があります。)
 
 
-## 準備
+### 準備
 CityGML形式のデータが必要です。
 
 [3D都市モデル（Project PLATEAU）東京都23区](https://www.geospatial.jp/ckan/dataset/plateau-tokyo23ku)からCityGML形式のデータをダウンロードし解凍してください。
@@ -18,7 +18,7 @@ CityGML形式のデータが必要です。
 
 また、東京都以外の都市データも公開されています。[3D都市モデル（Project PLATEAU）ポータルサイト](https://www.geospatial.jp/ckan/dataset/plateau)
 
-## 1.CityGMLをobjに変換
+### 1.CityGMLをobjに変換
 
 以下を実行すると$HOME/CG2RM/obj の中にCityGMLから変換されたobjファイルが生成されます。$HOME/CG2RM/objはプログラムが自動的に作成します。
 
@@ -61,7 +61,7 @@ optional arguments:
 python view_obj.py $HOME/CG2RM/obj_file.obj
 ```
 
-## 2.obj から点群生成
+### 2.obj から点群生成
 生成したobjファイルのメッシュ表面をサンプリングすることで点群を生成します。densityは面積あたりにサンプリングする点群の数の目安です。
 コマンドを実行すると$HOME/CG2RM/pointcloud の中にply,とpcdファイルが生成されます。plyファイルは[cloud comapre](https://www.danielgm.net/cc/)などで表示して確認が可能です。
 ```
@@ -83,7 +83,7 @@ optional arguments:
 ```
 
 
-## 3.BIMを使う場合）BIMをobj・点群に変換
+### 3.BIMを使う場合）BIMをobj・点群に変換
 
 BIMをobjに変換する場合はIfcConvertを使用します。以下のようにコマンドで変換を行います。
 ```
@@ -91,7 +91,7 @@ BIMをobjに変換する場合はIfcConvertを使用します。以下のよう�
 ```
 objに変換された後は、2と同様に点群への変換が可能です。
 
-## 4.（BIMを使う場合）obj(CityGMLから)とobj(BIM)の位置合わせを行う
+### 4.（BIMを使う場合）obj(CityGMLから)とobj(BIM)の位置合わせを行う
 
 位置合わせを行いたいCityGMLとBIMとそれぞれから生成された点群を指定し
 ```
@@ -113,7 +113,7 @@ optional arguments:
 コマンドを実行することでCityGMLが持つ座標系に合うように位置調整したBIMが結果として得られます。  
 自動調整には限界があるため、うまく一致しない場合はBlenderなどのソフトを使って手動で調整することも可能です。
 
-## 5.複数の点群を一つの点群にまとめる
+### 5.複数の点群を一つの点群にまとめる
 
 複数の点群ファイルを一つに統一する場合、以下のようにコマンドを実行することで統合することが可能です。
 ````
