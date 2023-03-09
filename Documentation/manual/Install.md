@@ -58,7 +58,7 @@ wget --content-disposition https://s3.amazonaws.com/ifcopenshell-builds/IfcConve
 unzip IfcConvert-*-linux64.zip
 ````
 
-CityGMLtoRobotMap が必要とする　Python依存ライブラリをpoetryを用いてインストールします
+CityGMLtoRobotMap が必要とする　Python依存ライブラリを Poetryを用いてインストールします
 ````
 pip install poetry
 poetry install
