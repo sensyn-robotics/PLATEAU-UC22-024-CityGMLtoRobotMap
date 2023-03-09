@@ -81,11 +81,11 @@
 <h5 id="requirements">Requirements</h5>
 <p>確認済動作環境: Ubuntu18,python3.8</p>
 <h3 id="環境構築">環境構築</h3>
-<h3 id="1-install-dependency-library">1. install dependency library</h3>
+<h2 id="1-依存ライブラリのインストール">1. 依存ライブラリのインストール</h2>
 <pre><code>sudo apt install -y build-essential  libffi-dev libssl-dev zlib1g-dev liblzma-dev libbz2-dev libreadline-dev libsqlite3-dev libncurses5-dev libncursesw5-dev tk-dev  
 sudo apt install -y curl wget  git default-jre
 </code></pre>
-<h3 id="2-install-pyenv-and-python-38">2. install pyenv and python 3.8</h3>
+<h2 id="2--pyenv-と-python-38-のインストール">2.  pyenv と python 3.8 のインストール</h2>
 <p>python 3.8環境を導入するためにここではpyenvを紹介しますが、他の方法でも問題ありません。</p>
 <h5 id="download-pyenv">download pyenv</h5>
 <pre><code>curl https://pyenv.run | bash
@@ -108,12 +108,11 @@ pyenv local 3.8.13
 python -V
 pip install --upgrade pip
 </code></pre>
-<h2 id="3-install-citygmltorobotmap">3. Install CityGMLtoRobotMap</h2>
+<h2 id="3--citygmltorobotmapのインストール">3.  CityGMLtoRobotMap　のインストール</h2>
 <h4 id="clone-citygmltorobotmap">Clone CityGMLtoRobotMap</h4>
 <pre><code>git clone https://github.com/sensyn-robotics/PLATEAU-UC22-024-CityGMLtoRobotMap CityGMLtoRobotMap
 cd ./CityGMLtoRobotMap
 </code></pre>
-<p>TODO : self url</p>
 <h4 id="download-citygml-tools">Download <a href="https://github.com/citygml4j/citygml-tools">citygml-tools</a></h4>
 <pre><code>wget --content-disposition https://github.com/citygml4j/citygml-tools/releases/download/v2.0.0/citygml-tools-2.0.0.zip
 unzip citygml-tools-2.0.0.zip
@@ -123,7 +122,7 @@ unzip citygml-tools-2.0.0.zip
 wget --content-disposition https://s3.amazonaws.com/ifcopenshell-builds/IfcConvert-v0.6.0-0087fa8-linux64.zip
 unzip IfcConvert-*-linux64.zip
 </code></pre>
-<h4 id="install-citygmltorobotmap-python-dependency">install CityGMLtoRobotMap python dependency</h4>
+<h4 id="citygmltorobotmap-が必要とするpython-dependency-のインストール">CityGMLtoRobotMap が必要とする　python dependency のインストール</h4>
 <pre><code>pip install poetry
 poetry install
 # swich into poetry environment
@@ -137,7 +136,7 @@ poetry shell
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/sensyn-robotics/PLATEAU-UC22-024-CityGMLtoRobotMap/blob/main/Documentation/manual/Install.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/sensyn-robotics/PLATEAU-UC22-024-CityGMLtoRobotMap/blob/documentation/Documentation/manual/Install.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
