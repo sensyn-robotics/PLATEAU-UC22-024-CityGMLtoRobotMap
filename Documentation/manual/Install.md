@@ -25,7 +25,7 @@ echo 'eval "$(pyenv init -)"' >> ~/.bashrc
 source ~/.bashrc
 ````
 
-##### install and activate specific version python
+##### 特定バージョンの　python　をインストールし、アクティベートする
 ````
 pyenv install 3.8.13
 ````
