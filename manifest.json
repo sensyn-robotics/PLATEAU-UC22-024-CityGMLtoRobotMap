@@ -28,7 +28,7 @@
       "output": {
         ".html": {
           "relative_path": "manual/EXAMPLE.html",
-          "hash": "ET0biDSzGMBN6Kl35x7m9r5ZN63sK0hszGW+CP5WE38="
+          "hash": "Tb7l0Q/vwXdKdEh3yUqdrTLxtsTNpNUfHUJM5lQ/f2I="
         }
       },
       "version": ""
@@ -39,7 +39,7 @@
       "output": {
         ".html": {
           "relative_path": "manual/Install.html",
-          "hash": "s4P4a+E0LR7pPknabTPEfUFgU4Tin8IunHncs2FeYPI="
+          "hash": "uIfJUTqg34XyN2abBfES8y+JTV/1eUZfCmGPail8uUw="
         }
       },
       "version": ""
@@ -57,22 +57,11 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "manual/SUMMARY.md",
-      "output": {
-        ".html": {
-          "relative_path": "manual/SUMMARY.html",
-          "hash": "/PF0WHP5IeTcykL+OZXF/pqqU5dN/PM2ZjZwd+EcJTM="
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
       "source_relative_path": "manual/Usage.md",
       "output": {
         ".html": {
           "relative_path": "manual/Usage.html",
-          "hash": "AKdaFRE6vY+SEw3vklg29s6CupAKZ/d74fBprKVQ1o0="
+          "hash": "kVAV4zc/e7WMRS4RKS9R0dvLKpdq52RQcNq9xODdbs0="
         }
       },
       "version": ""
