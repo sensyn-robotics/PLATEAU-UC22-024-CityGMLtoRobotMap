@@ -72,6 +72,7 @@ python align_bim.py --source ~/CG2RM/pointcloud/warehouse_trans_sample.ply --tar
 ```
 
 <img src="../resources/EXAMPLE//align_result.jpg" width="80%">
+
 赤く表示されているモデルは初期位置。黄色く表示されているモデルはプログラムにより自動調整された後のモデル位置。
 位置変換後の結果obj,ply,pcdは"~/CG2RM/transformed"内に保存されます。
 
