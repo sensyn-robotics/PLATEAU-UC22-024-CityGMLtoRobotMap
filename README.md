@@ -4,7 +4,7 @@
 
 ## 1. 概要
 * 「CityGMLtoRobotMap」はCityGMLをRobotが自己位置推定などで使用できる環境地図として変換するためのツール群です。CityGMLからOBJ形式への形式変換・座標変換の機能、OBJファイルの表面をサンプリングして点群を生成できる機能、BIMとCityGMLのマージ機能があります。
-* 本ツールは、令和4年度 民間ユースケース開発　（UC22-024）「3D都市モデルとBIMを活用したモビリティ自律運行システム」の中で[SnesynRobotics](https://www.sensyn-robotics.com/)が開発したものです。
+* 本ツールは、令和4年度 民間ユースケース開発　（UC22-024）「3D都市モデルとBIMを活用したモビリティ自律運行システム」の中で[Sensyn Robotics](https://www.sensyn-robotics.com/)が開発したものです。
 
 ## 2．「3D都市モデルとBIMを活用したモビリティ自律運行システム」について
 ### ユースケースの概要
@@ -18,14 +18,8 @@
 また、3D都市モデル（建築物モデルLOD2）とBIMモデルという形式の異なる２つのモデルを同一のマップに表示するために、それぞれのモデルに原点座標を持たせて統合し点群マップ化する方法を構築しました。
 
 ## 3．利用手順
-### インストール方法
-[Install](https://sensyn-robotics.github.io/PLATEAU-UC22-024-CityGMLtoRobotMap/manual/Install.html)を参照してください。
 
-### ツール使用例
-[Example ](https://sensyn-robotics.github.io/PLATEAU-UC22-024-CityGMLtoRobotMap/manual/EXAMPLE.html)を参照してください。
-
-### 各ツールの使い方
-[Usage](https://sensyn-robotics.github.io/PLATEAU-UC22-024-CityGMLtoRobotMap/manual/Usage.html)を参照してください。
+[インストール方法・使い方はこちら](https://sensyn-robotics.github.io/PLATEAU-UC22-024-CityGMLtoRobotMap/index.html)を参照してください。
 
 ## ライセンス
 * ソースコードおよび関連ドキュメントの著作権は国土交通省に帰属します。
