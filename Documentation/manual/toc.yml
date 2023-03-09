@@ -4,7 +4,7 @@
   items:
   - name: インストール
     href: Install.md
-  - name: Example
+  - name: サンプルデータを使った使用例
     href: EXAMPLE.md
-  - name: Usage
+  - name: 各コマンドの使い方
     href: Usage.md
