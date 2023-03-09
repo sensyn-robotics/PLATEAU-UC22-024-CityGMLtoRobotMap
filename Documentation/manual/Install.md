@@ -4,12 +4,12 @@
 確認済動作環境: Ubuntu18,python3.8
 
 ### 環境構築
-### 1. install dependency library
+## 1. 依存ライブラリのインストール
 ```
 sudo apt install -y build-essential  libffi-dev libssl-dev zlib1g-dev liblzma-dev libbz2-dev libreadline-dev libsqlite3-dev libncurses5-dev libncursesw5-dev tk-dev  
 sudo apt install -y curl wget  git default-jre
 ```
-### 2. install pyenv and python 3.8 
+## 2.  pyenv と python 3.8 のインストール
 python 3.8環境を導入するためにここではpyenvを紹介しますが、他の方法でも問題ありません。
 
 ##### download pyenv
@@ -40,13 +40,12 @@ python -V
 pip install --upgrade pip
 ````
 
-## 3. Install CityGMLtoRobotMap 
+## 3.  CityGMLtoRobotMap　のインストール 
 #### Clone CityGMLtoRobotMap
 ````
 git clone https://github.com/sensyn-robotics/PLATEAU-UC22-024-CityGMLtoRobotMap CityGMLtoRobotMap
 cd ./CityGMLtoRobotMap
 ````
-TODO : self url 
 
 #### Download [citygml-tools](https://github.com/citygml4j/citygml-tools)
 ````
@@ -61,7 +60,7 @@ wget --content-disposition https://s3.amazonaws.com/ifcopenshell-builds/IfcConve
 unzip IfcConvert-*-linux64.zip
 ````
 
-#### install CityGMLtoRobotMap python dependency 
+####  CityGMLtoRobotMap が必要とする　python dependency のインストール
 
 ````
 pip install poetry
