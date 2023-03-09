@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-      <title>Install | PLATEAU CityGMLtoRobotMap </title>
+      <title>環境構築・インストール | PLATEAU CityGMLtoRobotMap </title>
       <meta name="viewport" content="width=device-width">
-      <meta name="title" content="Install | PLATEAU CityGMLtoRobotMap ">
+      <meta name="title" content="環境構築・インストール | PLATEAU CityGMLtoRobotMap ">
     
       <link rel="shortcut icon" href="../favicon.ico">
       <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -76,16 +76,15 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="install">Install</h1>
+<h1 id="環境構築インストール">環境構築・インストール</h1>
 
-<h3 id="環境構築">環境構築</h3>
-<p>動作環境: Ubuntu18,python3.8</p>
+<p>必要動作環境: Ubuntu18, Python3.8</p>
 <h3 id="1-依存ライブラリのインストール">1. 依存ライブラリのインストール</h3>
 <pre><code>sudo apt install -y build-essential  libffi-dev libssl-dev zlib1g-dev liblzma-dev libbz2-dev libreadline-dev libsqlite3-dev libncurses5-dev libncursesw5-dev tk-dev  
 sudo apt install -y curl wget  git default-jre
 </code></pre>
-<h3 id="2--pyenv-と-python-38-のインストール">2.  pyenv と python 3.8 のインストール</h3>
-<p>python 3.8環境を導入するためにここではpyenvを紹介しますが、他の方法でも問題ありません。</p>
+<h3 id="2--pyenv-と-python38-のインストール">2.  pyenv と Python3.8 のインストール</h3>
+<p>Python3.8環境を導入するためにここではpyenvを紹介しますが、他の方法でも問題ありません。</p>
 <p>pyenvをダウンロード</p>
 <pre><code>curl https://pyenv.run | bash
 </code></pre>
@@ -95,7 +94,7 @@ echo 'command -v pyenv &gt;/dev/null || export PATH=&quot;$PYENV_ROOT/bin:$PATH&
 echo 'eval &quot;$(pyenv init -)&quot;' &gt;&gt; ~/.bashrc
 source ~/.bashrc
 </code></pre>
-<p>特定バージョンの　python　をインストールし、アクティベートする</p>
+<p>特定バージョンのPythonをインストールし、アクティベートする</p>
 <pre><code>pyenv install 3.8.13
 </code></pre>
 <pre><code># 3.8.13をシステム全体で使いたい場合は global　optionを使う
@@ -108,23 +107,24 @@ python -V
 pip install --upgrade pip
 </code></pre>
 <h3 id="3--citygmltorobotmapのインストール">3.  CityGMLtoRobotMap　のインストール</h3>
-<p>Clone CityGMLtoRobotMap</p>
+<p>CityGMLtoRobotMapをクローンします</p>
 <pre><code>git clone https://github.com/sensyn-robotics/PLATEAU-UC22-024-CityGMLtoRobotMap CityGMLtoRobotMap
 cd ./CityGMLtoRobotMap
 </code></pre>
-<p>ダウンロード <a href="https://github.com/citygml4j/citygml-tools">citygml-tools</a></p>
+<p><a href="https://github.com/citygml4j/citygml-tools">citygml-tools</a>をダウンロードします</p>
 <pre><code>wget --content-disposition https://github.com/citygml4j/citygml-tools/releases/download/v2.0.0/citygml-tools-2.0.0.zip
 unzip citygml-tools-2.0.0.zip
 </code></pre>
-<p>ダウンロード <a href="https://blenderbim.org/docs-python/ifcconvert/installation.html">IfcConverter</a> （BIMを使う場合）</p>
-<pre><code># operation checked on only ubuntu18 
-wget --content-disposition https://s3.amazonaws.com/ifcopenshell-builds/IfcConvert-v0.6.0-0087fa8-linux64.zip
+<p><a href="https://blenderbim.org/docs-python/ifcconvert/installation.html">IfcConverter</a>をダウンロードします （BIMを使う場合）
+（ubuntu18で動作確認できたバージョンを記載しています）</p>
+<pre><code>wget --content-disposition https://s3.amazonaws.com/ifcopenshell-builds/IfcConvert-v0.6.0-0087fa8-linux64.zip
 unzip IfcConvert-*-linux64.zip
 </code></pre>
-<p>CityGMLtoRobotMap が必要とする　python 依存ライブラリのインストール</p>
+<p>CityGMLtoRobotMap が必要とする　Python依存ライブラリをpoetryを用いてインストールします</p>
 <pre><code>pip install poetry
 poetry install
-# swich into poetry environment
+
+# poetry環境へ切り替えます 
 poetry shell
 </code></pre>
 </article>
