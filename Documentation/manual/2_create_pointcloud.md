@@ -1,4 +1,4 @@
-# obj から点群生成
+# obj から点群を生成
 
 生成したobjファイルのメッシュ表面をサンプリングすることで点群を生成します。densityは面積あたりにサンプリングする点群の数の目安です。
 コマンドを実行すると$HOME/CG2RM/pointcloud の中にply,とpcdファイルが生成されます。plyファイルは[cloud comapre](https://www.danielgm.net/cc/)などで表示して確認が可能です。

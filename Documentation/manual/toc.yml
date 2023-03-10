@@ -14,6 +14,6 @@
     href: 4_align.md
   - name: 複数の点群を一つの点群にまとめる
     href: 5_merge.md
-  - name: サンプルデータを使った使用例・手順
+  - name: サンプルデータを使ったテスト手順
     href: EXAMPLE.md
 

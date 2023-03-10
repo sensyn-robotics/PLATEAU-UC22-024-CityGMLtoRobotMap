@@ -1,4 +1,4 @@
-# BIM(ifc)をobj・点群に変換
+#  BIM(ifc)をobjに変換
 
 BIMをobjに変換する場合はIfcConvertを使用します。以下のようにコマンドで変換を行います。
 ```

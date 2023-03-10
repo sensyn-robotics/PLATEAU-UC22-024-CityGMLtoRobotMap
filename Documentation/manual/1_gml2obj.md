@@ -1,4 +1,4 @@
-# CityGMLをobjに変換する
+# CityGMLをobjに変換
 
 ### データ準備
 CityGML形式のデータが必要となります。

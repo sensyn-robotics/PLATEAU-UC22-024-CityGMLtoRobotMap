@@ -1,4 +1,4 @@
-# obj(CityGML)とobj(BIM)の位置合わせを行う
+# CityGMLとBIMの位置合わせ
 
 位置合わせを行いたいCityGMLとBIMとそれぞれから生成された点群を指定し
 ```
