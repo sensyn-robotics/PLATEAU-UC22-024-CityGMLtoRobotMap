@@ -24,6 +24,61 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "manual/1_gml2obj.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/1_gml2obj.html",
+          "hash": "Cr2zap82cmzAzTBPtEd7eMps9vs9MvBiAbc3hjtcCR8="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "manual/2_create_pointcloud.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/2_create_pointcloud.html",
+          "hash": "kQ7CN1qJbkTEIiLPCUpPBlFJbD4JQsmxYOWQFo1pQn4="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "manual/3_ifc_convert.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/3_ifc_convert.html",
+          "hash": "b5R+8vMkZrKiaxK+nM2qlMItv/+Vq8vBDMHJaC1eVzA="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "manual/4_align.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/4_align.html",
+          "hash": "SfHXnQNLBGAnFDGFlTLri0FonNrV6D/HDA7HPWiOnKI="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "manual/5_merge.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/5_merge.html",
+          "hash": "0QNWgge5bEd7Z/X0L5iKjAwJaezVIBtC3dEr+9cAU80="
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "manual/EXAMPLE.md",
       "output": {
         ".html": {
@@ -72,7 +127,7 @@
       "output": {
         ".html": {
           "relative_path": "manual/toc.html",
-          "hash": "JFQ8E2KRAz19RVR3EqxDO5i7ovi3dZKxrhUx8/vC528="
+          "hash": "AVqwtGUraAnI70LncIgP6277bgGf8wQMcgruPTWUBx4="
         }
       },
       "version": ""
