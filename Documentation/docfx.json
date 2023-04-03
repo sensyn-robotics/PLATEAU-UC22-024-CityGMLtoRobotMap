@@ -5,6 +5,7 @@
         "globalMetadata": {
             "_appTitle": "PLATEAU CityGMLtoRobotMap",
             "_appFooter": "PLATEAU CityGMLtoRobotMap",
+            "_disableContribution": true,
             "_enableSearch": true
         },
         "content": [
